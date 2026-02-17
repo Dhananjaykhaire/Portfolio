@@ -3,6 +3,8 @@ const navBar = document.querySelector('nav');
 const navLinks = document.querySelector('nav ul');
 const copyrightEl = document.querySelector('#copyright');
 const backendStatusEl = document.querySelector('#backendStatus');
+const contactForm = document.querySelector('#contactForm');
+const formStatusEl = document.querySelector('#formStatus');
 
 function openMenu() {
   sideMenu.style.transform = 'translateX(-16rem)';
@@ -43,7 +45,6 @@ window.addEventListener('scroll', () => {
   }
 });
 
-//----------------light mode and dark mode---------------
 if (
   localStorage.theme === 'dark' ||
   (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
@@ -88,6 +89,49 @@ async function initializeDynamicContent() {
       backendStatusEl.textContent = 'Backend status: Not connected (running static mode)';
     }
   }
+}
+
+async function handleContactSubmit(event) {
+  event.preventDefault();
+
+  if (!contactForm) return;
+
+  const formData = new FormData(contactForm);
+  const payload = {
+    name: String(formData.get('name') || '').trim(),
+    email: String(formData.get('email') || '').trim(),
+    message: String(formData.get('message') || '').trim()
+  };
+
+  if (!payload.name || !payload.email || !payload.message) {
+    if (formStatusEl) formStatusEl.textContent = 'Please fill all fields before submitting.';
+    return;
+  }
+
+  if (formStatusEl) formStatusEl.textContent = 'Submitting your message...';
+
+  try {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await response.json();
+
+    if (!response.ok || !data.ok) {
+      throw new Error(data.error || 'Unable to submit form right now.');
+    }
+
+    contactForm.reset();
+    if (formStatusEl) formStatusEl.textContent = 'Thanks! Your message has been submitted successfully. ✅';
+  } catch (error) {
+    if (formStatusEl) formStatusEl.textContent = error.message || 'Submission failed. Please try again.';
+  }
+}
+
+if (contactForm) {
+  contactForm.addEventListener('submit', handleContactSubmit);
 }
 
 initializeDynamicContent();
