@@ -1,0 +1,11 @@
+{
+  "name": "portfolio",
+  "version": "1.1.0",
+  "description": "Personal portfolio with dependency-free Node backend API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "check": "node --check server.js && node --check script.js"
+  }
+}

@@ -361,10 +361,10 @@ dark:bg-none">
     <h2 class="text-center text-5xl font-Ovo">Get in touch</h2>
     <p class="text-center max-w-2xl mx-auto mt-5 mb-12"> I'd love to hear from you!
     If you have any question, comments or feedback, please use the  form  below.</p>
+    <p id="backendStatus" class="text-center text-sm text-gray-500 dark:text-white/70">Backend status: Checking…</p>
 
-    <form method="POST" action="https://api.web3forms.com/submit" class="max-w-2xl mx-auto">
+    <form id="contactForm" class="max-w-2xl mx-auto">
                
-        <input type="hidden" name="access_key" value="b0a3e271-4618-4f95-a1b1-9d9b2185db30">
 
         <div class="grid grid-cols-auto gap-6 mt-10 mb-8">
             <input type="text" placeholder="Enter your name" class="flex-1 p-3
@@ -381,6 +381,8 @@ dark:bg-none">
         dark:border-white/90 bg-white
             dark:bg-darkHover/30" required name="message"></textarea>
 
+        <p id="formStatus" class="text-center text-sm mb-4 text-gray-600 dark:text-white/70"></p>
+
     <button class="py-3 px-8 w-max flex items-center justify-between gap-2
     bg-black/80 text-white rounded-full mx-auto  hover:bg-black duration-500
     dark:bg-transparent dark:border-[0.5px] dark:hover:bg-darkHover">Submit now
@@ -394,7 +396,7 @@ dark:bg-none">
    <div class="text-center">
     <img src="D.logo.png" alt="" class="w-36 mx-auto mb-2 dark:hidden">
 
-    <img src="Images/d.logodark.png" alt="" class="w-36 mx-auto mb-2 hidden dark:block">
+    <img src="d.logodark.png" alt="" class="w-36 mx-auto mb-2 hidden dark:block">
 
     <div class="w-max flex items-center gap-2 mx-auto">
         <img src="mail_icon.png" alt="" class="w-6 dark:hidden">
@@ -404,7 +406,7 @@ dark:bg-none">
    </div>
    <div class="text-center sm:flex items-center justify-between border-t
    border-gray-400 mx-[10%] mt-12 py-6">
-      <p>© 2024 Dhananjay Khaire. All rights reserved.</p>
+      <p id="copyright">© 2024 Dhananjay Khaire. All rights reserved.</p>
       <ul class="flex items-center gap-10 justify-center mt-4 sm:mt-0">
         <li><a href="https://github.com/Dhananjaykhaire"><i class="fa-brands fa-github" style="font-size: 24px;"></i></a></li>
         <li><a href="https://www.instagram.com/dhananjay_1473/"><i class="fa-brands fa-instagram" style="font-size: 24px;"></i></a></li>
