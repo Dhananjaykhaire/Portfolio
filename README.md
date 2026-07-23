@@ -1,6 +1,6 @@
 # Portfolio
 
-Personal portfolio Website for Dhananjay Khaire with a full-stack setup.
+Personal portfolio website for Dhananjay Khaire with a full-stack setup.
 
 ## What's included
 - Frontend portfolio UI in `index.html` + `script.js`.

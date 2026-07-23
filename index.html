@@ -1,420 +1,3002 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth ">
-<head>
+<html lang="en" class="scroll-smooth">
+
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio-DK</title>
+    <meta name="description"
+      content="Dhananjay Khaire - MCA AI/ML student portfolio focused on Python, AWS, Linux, AI/ML projects, deployment, and support roles.">
+    <title>Dhananjay Khaire | AI/ML, Python & Cloud Portfolio</title>
     <link rel="icon" type="image/png" href="dev-icon.jpeg">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="./tailwind.config.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Ovo&display=swap" rel="stylesheet">
-</head>
-<body class="overflow-x-hidden font-Outfit leading-8 dark:bg-darkTheme dark:text-white">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Ovo&display=swap"
+      rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            Outfit: ['Outfit', 'sans-serif'],
+            Ovo: ['Ovo', 'serif']
+          },
+          colors: {
+            ink: '#05010b',
+            grape: '#12051f',
+            plum: '#2a0742',
+            neon: '#c026d3',
+            glow: '#8b5cf6'
+          }
+        }
+      }
+    };
+  </script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"
+      crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.umd.js"
+      crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"
+      crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/lucide@latest"
+      crossorigin="anonymous"></script>
+    <style>
+    :root {
+      --violet: #a855f7;
+      --pink: #ec4899;
+      --amber: #f59e0b;
+      --border: rgba(255, 255, 255, .13);
+      --soft: rgba(255, 255, 255, .07);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: #f8fafc;
+      font-family: Outfit, sans-serif;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(192, 38, 211, .32), transparent 28rem),
+        radial-gradient(circle at 12% 18%, rgba(139, 92, 246, .22), transparent 26rem),
+        radial-gradient(circle at 88% 34%, rgba(236, 72, 153, .16), transparent 24rem),
+        linear-gradient(180deg, #07000f 0%, #10051d 42%, #05010b 100%);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
+      background-size: 70px 70px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .7), transparent 80%);
+    }
+
+
+    .glass {
+      background: linear-gradient(145deg, rgba(255, 255, 255, .105), rgba(255, 255, 255, .035));
+      border: 1px solid var(--border);
+      box-shadow:
+        0 24px 80px rgba(0, 0, 0, .42),
+        inset 0 1px 0 rgba(255, 255, 255, .08);
+      backdrop-filter: blur(20px);
+    }
+
+
+    .neon-card {
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, .09), rgba(255, 255, 255, .03)),
+        radial-gradient(circle at top, rgba(168, 85, 247, .18), transparent 55%);
+      border: 1px solid rgba(255, 255, 255, .13);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, .32);
+      transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+    }
+
+    .neon-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(216, 180, 254, .46);
+      box-shadow: 0 24px 75px rgba(126, 34, 206, .28);
+    }
+
+
+    .section-shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 6.5rem 1.25rem;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      color: #e9d5ff;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .kicker::before,
+    .kicker::after {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(216, 180, 254, .75));
+    }
+
+    .kicker::after {
+      background: linear-gradient(90deg, rgba(216, 180, 254, .75), transparent);
+    }
+
+    .title-glow {
+      text-shadow: 0 0 34px rgba(216, 180, 254, .18);
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #fff, #e9d5ff 42%, #f9a8d4 72%, #fed7aa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .badge {
+      background: rgba(168, 85, 247, .12);
+      border: 1px solid rgba(216, 180, 254, .25);
+      box-shadow: 0 0 28px rgba(168, 85, 247, .08);
+    }
+
+
+    .skill-logo {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      margin: 0 auto 1rem;
+      filter: drop-shadow(0 0 12px rgba(168, 85, 247, .18));
+      transition: transform .25s ease, filter .25s ease;
+    }
+
+    .skill-tile:hover .skill-logo {
+      transform: translateY(-5px) scale(1.08);
+      filter: drop-shadow(0 0 18px rgba(236, 72, 153, .28));
+    }
+
+    .project-overlay {
+      background: linear-gradient(180deg, transparent 0%, rgba(5, 1, 11, .76) 45%, rgba(5, 1, 11, .98) 100%);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.88);
+      transition: transform 0.25s ease, opacity 0.25s ease, background 0.25s ease;
+    }
+
+    .menu-toggle.open span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.open span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    @media (max-width: 768px) {
+      .nav-glass {
+        padding: 0.75rem 1rem;
+      }
+
+      .nav-glass nav {
+        padding: 0.5rem 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-glass {
+        padding: 0.5rem 0.75rem;
+      }
+
+      .nav-glass nav {
+        padding: 0.25rem 0;
+      }
+    }
+
+    .nav-glass {
+      background: rgba(7, 1, 13, 0.7);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-scrolled {
+      background: rgba(7, 1, 13, 0.85);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-hidden {
+      transform: translateY(-100%);
+    }
+
+    .timeline-container {
+      position: relative;
+      padding: 2rem 1rem 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      --timeline-item-gap: 2rem;
+      --timeline-center-column: 4rem;
+      --timeline-connector-width: calc(var(--timeline-item-gap) + (var(--timeline-center-column) / 2));
+    }
+
+    .timeline-floaters {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .timeline-floater {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(30px);
+      opacity: 0.22;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .timeline-floater.one {
+      width: 140px;
+      height: 140px;
+      background: rgba(168, 85, 247, 0.3);
+      top: 10%;
+      left: 8%;
+    }
+
+    .timeline-floater.two {
+      width: 100px;
+      height: 100px;
+      background: rgba(79, 70, 229, 0.25);
+      bottom: 14%;
+      right: 10%;
+    }
+
+    .timeline-floater.three {
+      width: 180px;
+      height: 180px;
+      background: rgba(37, 99, 235, 0.14);
+      top: 40%;
+      right: 18%;
+    }
+
+    /* Responsive Academic Timeline */
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      top: calc(2rem + 122px);
+      width: 4px;
+      bottom: calc(1.5rem + 122px);
+      transform: translateX(-50%);
+      border-radius: 9999px;
+      background: linear-gradient(to top, rgba(59,130,246,0.4), rgba(168,85,247,0.85), rgba(79,70,229,0.65));
+      box-shadow: 0 0 18px rgba(168, 85, 247, 0.45), 0 0 36px rgba(124, 58, 237, 0.25);
+      animation: flowLine 8s linear infinite;
+      background-size: 100% 200%;
+      background-position: bottom;
+      z-index: 1;
+    }
+
+    @keyframes flowLine {
+      to {
+        background-position: top;
+      }
+    }
+
+    .timeline-list {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) var(--timeline-center-column) minmax(0, 1fr);
+      gap: var(--timeline-item-gap);
+      align-items: start;
+      justify-items: stretch;
+    }
+
+    .timeline-card-wrapper {
+      position: relative;
+      z-index: 2;
+      display: flex;
+    }
+
+    .timeline-card-wrapper::before,
+    .timeline-card-wrapper::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .timeline-card-wrapper::before {
+      width: var(--timeline-connector-width);
+      height: 2px;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, rgba(168,85,247,0.85), rgba(79,70,229,0.55));
+      box-shadow: 0 0 14px rgba(168, 85, 247, 0.35);
+      z-index: 0;
+    }
+
+    .timeline-card-wrapper::after {
+      width: 0.62rem;
+      height: 0.62rem;
+      border-top: 2px solid rgba(168, 85, 247, 0.9);
+      border-right: 2px solid rgba(168, 85, 247, 0.9);
+      filter: drop-shadow(0 0 7px rgba(168, 85, 247, 0.45));
+      z-index: 1;
+    }
+
+    .timeline-card-wrapper.left {
+      grid-column: 1;
+      justify-content: flex-end;
+      text-align: right;
+    }
+
+    .timeline-card-wrapper.left::before {
+      right: calc(var(--timeline-connector-width) * -1);
+    }
+
+    .timeline-card-wrapper.left::after {
+      right: -0.34rem;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .timeline-card-wrapper.right {
+      grid-column: 3;
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    .timeline-card-wrapper.right::before {
+      left: calc(var(--timeline-connector-width) * -1);
+    }
+
+    .timeline-card-wrapper.right::after {
+      left: -0.34rem;
+      transform: translateY(-50%) rotate(-135deg);
+    }
+
+    .timeline-marker-wrapper {
+      position: relative;
+      grid-column: 2;
+      z-index: 3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 244px;
+    }
+
+    .timeline-marker {
+      width: 18px;
+      height: 18px;
+      border-radius: 9999px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: linear-gradient(135deg, rgba(168,85,247,1), rgba(79,70,229,1));
+      box-shadow: 0 0 18px rgba(168, 85, 247, 0.5), 0 0 34px rgba(124, 58, 237, 0.35);
+      animation: markerGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes markerGlow {
+      from {
+        box-shadow: 0 0 18px rgba(168, 85, 247, 0.5), 0 0 34px rgba(124, 58, 237, 0.35);
+      }
+      to {
+        box-shadow: 0 0 26px rgba(168, 85, 247, 0.75), 0 0 46px rgba(124, 58, 237, 0.45);
+      }
+    }
+
+    .timeline-marker-active {
+      opacity: 1;
+    }
+
+    @media (min-width: 768px) and (max-width: 1199px) {
+      .timeline-list {
+        gap: 2.4rem;
+      }
+
+      .timeline-container {
+        padding: 1.75rem 0.75rem 1.25rem;
+        --timeline-item-gap: 1.25rem;
+        --timeline-center-column: 3.25rem;
+        --timeline-connector-width: calc(var(--timeline-item-gap) + (var(--timeline-center-column) / 2));
+      }
+
+      .timeline-line {
+        top: calc(1.75rem + 116px);
+        bottom: calc(1.25rem + 116px);
+      }
+
+      .timeline-item {
+        grid-template-columns: minmax(0, 1fr) var(--timeline-center-column) minmax(0, 1fr);
+      }
+
+      .timeline-line {
+        width: 3px;
+      }
+
+      .timeline-marker {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .timeline-container {
+        padding: 2.5rem 0.75rem 2rem 0.25rem;
+        --timeline-connector-width: 1.35rem;
+      }
+
+      .timeline-line {
+        display: block;
+        left: 2.05rem;
+        top: calc(2.5rem + 118px);
+        bottom: calc(2rem + 118px);
+        width: 3px;
+        transform: none;
+      }
+
+      .timeline-list {
+        gap: 2.75rem;
+      }
+
+      .timeline-item {
+        grid-template-columns: 4.1rem minmax(0, 1fr);
+        gap: 0;
+        align-items: start;
+        position: relative;
+      }
+
+      .timeline-marker-wrapper {
+        grid-column: 1;
+        grid-row: 1;
+        justify-content: center;
+        width: 4.1rem;
+        min-height: 236px;
+      }
+
+      .timeline-marker {
+        width: 18px;
+        height: 18px;
+      }
+
+      .timeline-connector {
+        display: none;
+      }
+
+      .timeline-card-wrapper::before {
+        display: block;
+        content: '';
+        position: absolute;
+        left: -4.1rem;
+        top: 1.25rem;
+        width: 4.1rem;
+        height: 2px;
+        background: linear-gradient(to right, rgba(168,85,247,0.8), rgba(79,70,229,0.55));
+        box-shadow: 0 0 14px rgba(168, 85, 247, 0.3);
+        border-radius: 9999px;
+      }
+
+      .timeline-card-wrapper,
+      .timeline-card-wrapper.left,
+      .timeline-card-wrapper.right {
+        grid-column: 2;
+        grid-row: 1;
+        justify-content: flex-start;
+        text-align: left;
+        width: 100%;
+        min-width: 0;
+      }
+
+      .timeline-card-wrapper::before,
+      .timeline-card-wrapper::after {
+        display: none;
+      }
+
+      .timeline-card-wrapper .timeline-card {
+        width: 94%;
+        max-width: 94%;
+        min-height: 236px;
+        padding: 1.15rem;
+        border-radius: 1.35rem;
+      }
+
+      .timeline-card-title {
+        font-size: clamp(1rem, 4.6vw, 1.125rem);
+        line-height: 1.35;
+      }
+
+      .timeline-card-subtitle {
+        font-size: 0.875rem;
+        line-height: 1.55;
+      }
+
+      .timeline-badge {
+        font-size: 0.75rem;
+        padding: 0.5rem 0.72rem;
+      }
+
+      .timeline-card-button {
+        font-size: 0.875rem;
+        min-height: 44px;
+        width: min(100%, 10.5rem);
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE TIMELINE TYPOGRAPHY
+       ============================================ */
+    /* Desktop (1200px+) */
+    @media (min-width: 1200px) {
+      #about .title-glow {
+        font-size: 2.375rem;
+        line-height: 1.15;
+      }
+
+      .timeline-card-title {
+        font-size: 1.75rem;
+        line-height: 1.2;
+      }
+
+      .timeline-card-subtitle {
+        font-size: 1rem;
+      }
+
+      .timeline-badge {
+        font-size: 0.875rem;
+      }
+    }
+
+    /* Tablet (768px-1199px) */
+    @media (min-width: 768px) and (max-width: 1199px) {
+      #about .title-glow {
+        font-size: 2rem;
+        line-height: 1.2;
+      }
+
+      .timeline-card-title {
+        font-size: 1.5rem;
+        line-height: 1.25;
+      }
+
+      .timeline-card-subtitle {
+        font-size: 0.9375rem;
+      }
+
+      .timeline-badge {
+        font-size: 0.8125rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      #about .title-glow {
+        font-size: clamp(1.125rem, 5.4vw, 1.375rem);
+        line-height: 1.25;
+      }
+
+      #about .kicker {
+        font-size: 0.72rem;
+      }
+    }
+
+    .timeline-card {
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(9, 10, 25, 0.88);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.24);
+      padding: 1.35rem;
+      max-width: 520px;
+      width: 100%;
+      min-height: 244px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      position: relative;
+      z-index: 2;
+      transform: translateY(0);
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .timeline-card-details {
+      will-change: height, opacity, transform;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .timeline-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(168, 85, 247, 0.4);
+        box-shadow: 0 0 30px rgba(168, 85, 247, 0.15), 0 0 60px rgba(168, 85, 247, 0.1);
+      }
+    }
+
+    .timeline-card h4,
+    .timeline-card p,
+    .timeline-card strong {
+      color: #f8fafc;
+    }
+
+    .timeline-connector {
+      display: none;
+    }
+
+    @media (max-width: 767px) {
+      .timeline-connector {
+        display: block;
+      }
+    }
+
+    .timeline-badge,
+    .timeline-chip,
+    .timeline-card-button,
+    .timeline-more-toggle {
+      font-weight: 600;
+    }
+
+    .timeline-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.55rem 0.9rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #d8b4fe;
+      font-size: 0.82rem;
+      flex: 0 1 auto;
+      max-width: 100%;
+      line-height: 1.25;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .timeline-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .timeline-meta span {
+      min-width: 0;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .timeline-step-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 0.85rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #c4b5fd;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .timeline-details p {
+      margin: 0;
+    }
+
+    .timeline-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.55rem 0.85rem;
+      border-radius: 9999px;
+      background: rgba(168, 85, 247, 0.12);
+      border: 1px solid rgba(168, 85, 247, 0.22);
+      color: #e9d5ff;
+      font-size: 0.8rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline-card-footer {
+      width: 100%;
+    }
+
+    .timeline-card-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      min-width: max-content;
+      min-height: 46px;
+      padding: 0 1.25rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.06);
+      color: #eef2ff;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 10px 24px rgba(112, 60, 255, 0.16);
+      transition: background 0.28s cubic-bezier(0.22, 1, 0.36, 1), transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+      white-space: nowrap;
+    }
+
+    /* Mobile button centering */
+    @media (max-width: 767px) {
+      .timeline-card-footer {
+        justify-content: center;
+      }
+
+      .timeline-card-button {
+        width: min(100%, 10.5rem);
+        min-width: auto;
+      }
+    }
+
+    .timeline-card-button:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.14);
+        border-color: rgba(168, 85, 247, 0.28);
+        box-shadow: 0 12px 28px rgba(168, 85, 247, 0.22);
+    }
+
+    .timeline-card-button:active {
+      transform: translateY(-1px) scale(0.98);
+    }
+
+    .timeline-card-button:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.35);
+    }
+
+    .timeline-card-label {
+      font-weight: 700;
+      font-size: 0.96rem;
+      color: #eef2ff;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .timeline-card-chevron {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      color: #dfe7ff;
+      opacity: 0.95;
+      transform-origin: center;
+      backface-visibility: hidden;
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
+    }
+
+    .timeline-more-toggle {
+      border: none;
+      background: transparent;
+      color: #c4b5fd;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .timeline-more-toggle span {
+      display: inline-block;
+      transform: translateY(0);
+      transition: transform 0.25s ease;
+    }
+
+    .timeline-more-toggle.expanded span {
+      transform: rotate(180deg);
+    }
+
+    .timeline-subtitle {
+      color: #c8c8ff;
+      max-width: 780px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .nav-scrolled {
+      background: rgba(7, 1, 13, 0.88);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    .focus-ring:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.45);
+    }
+
+    .active-nav {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: 420px;
+    }
+
+    .project-card .project-image {
+      min-height: 240px;
+    }
+
+    .repo-card {
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .repo-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .featured-highlight {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .featured-highlight::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      margin: -1px;
+      border-radius: 2.25rem;
+      background: linear-gradient(90deg, rgba(248, 209, 255, 0.35), rgba(99, 102, 241, 0.35), rgba(251, 146, 60, 0.35));
+      filter: blur(14px);
+      opacity: 0.65;
+      pointer-events: none;
+    }
+
+    @media (max-width: 1024px) {
+      .section-shell {
+        padding: 5rem 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section-shell {
+        padding: 4rem 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section-shell {
+        padding: 3rem 0.75rem;
+      }
+    }
+
+    /* ============================================
+       GLOBAL RESPONSIVE FOUNDATION
+       ============================================ */
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    img, video, svg, picture, canvas {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Use clamp() for typography */
+    .section-shell h2 {
+      font-size: clamp(1.75rem, 4.5vw, 3.75rem);
+      line-height: 1.1;
+    }
+
+    .section-shell p,
+    .section-shell span,
+    .section-shell div {
+      max-width: 100%;
+    }
+
+    /* Universal box fix */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    /* Sliding nav hide/show */
+    .nav-hidden {
+      transform: translateY(-110%);
+    }
+
+    .nav-glass {
+      transition: transform 0.35s ease, background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+    }
+
+    /* Slide-out menu from right */
+    .slide-menu-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 49;
+    }
+
+    .slide-menu-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100dvh;
+      width: min(86vw, 360px);
+      background: linear-gradient(160deg, rgba(20, 4, 35, 0.96), rgba(7, 1, 13, 0.96));
+      border-left: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: -25px 0 60px rgba(0, 0, 0, 0.55);
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      padding: clamp(1.25rem, 4vw, 2rem);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .slide-menu-close {
+      align-self: flex-end;
+      width: 44px;
+      height: 44px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      cursor: pointer;
+      margin-bottom: 1.25rem;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .slide-menu-close:hover,
+    .slide-menu-close:focus-visible {
+      background: rgba(168, 85, 247, 0.18);
+      outline: none;
+    }
+
+    .slide-menu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+
+    .slide-menu-link {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.95rem 1.1rem;
+      border-radius: 1.1rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.04);
+      color: #f1f5f9;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .slide-menu-link:hover,
+    .slide-menu-link:focus-visible {
+      background: rgba(168, 85, 247, 0.15);
+      border-color: rgba(168, 85, 247, 0.4);
+      transform: translateX(4px);
+      outline: none;
+    }
+
+    .slide-menu-icon {
+      width: 22px;
+      height: 22px;
+      color: #d8b4fe;
+      flex-shrink: 0;
+    }
+
+    /* ============================================
+       BREAKPOINT: LARGE DESKTOP (1600px+)
+       ============================================ */
+    @media (min-width: 1600px) {
+      .section-shell {
+        max-width: 1320px;
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+      }
+      .section-shell h2 {
+        font-size: clamp(3rem, 4vw, 4.25rem);
+      }
+    }
+
+    /* ============================================
+       BREAKPOINT: DESKTOP (1200px–1599px) - default
+       ============================================ */
+    /* No overrides needed; defaults handle this range */
+
+    /* ============================================
+       BREAKPOINT: LAPTOP (992px–1199px)
+       ============================================ */
+    @media (max-width: 1199px) {
+      .section-shell {
+        padding: 5.5rem 1.25rem;
+      }
+      .section-shell h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+    }
+
+    /* ============================================
+       BREAKPOINT: TABLET (768px–991px)
+       ============================================ */
+    @media (max-width: 991px) {
+      .section-shell {
+        padding: 5rem 1.1rem;
+      }
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .cert-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .github-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .featured-grid {
+        grid-template-columns: 1fr;
+      }
+      .featured-image-wrap {
+        order: -1;
+      }
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .hero-title {
+        font-size: clamp(1.85rem, 5.5vw, 3rem);
+      }
+    }
+
+    /* ============================================
+       BREAKPOINT: TABLET SMALL (768px)
+       ============================================ */
+    @media (max-width: 767px) {
+      .section-shell {
+        padding: 4.5rem 0.95rem;
+      }
+      .section-shell h2 {
+        font-size: clamp(1.7rem, 6vw, 2.4rem);
+      }
+      .section-shell > div > .kicker {
+        font-size: 0.7rem;
+      }
+      .nav-glass {
+        padding: 0.6rem 0.85rem;
+      }
+      .nav-glass nav {
+        padding: 0.4rem 0;
+      }
+      .hero-section {
+        padding-top: 4rem;
+        padding-bottom: 2rem;
+      }
+      .hero-title {
+        font-size: clamp(1.65rem, 7vw, 2.4rem);
+        line-height: 1.18;
+      }
+      .hero-sub {
+        font-size: clamp(0.95rem, 3.5vw, 1.05rem);
+        line-height: 1.65;
+      }
+      .profile-ring {
+        width: clamp(8.5rem, 30vw, 11rem);
+        height: clamp(8.5rem, 30vw, 11rem);
+      }
+      .hero-greeting {
+        font-size: clamp(1rem, 4vw, 1.2rem);
+      }
+      .hero-badges {
+        gap: 0.5rem;
+      }
+      .hero-badge {
+        font-size: 0.8rem;
+        padding: 0.45rem 0.85rem;
+      }
+      .hero-cta {
+        gap: 0.65rem;
+      }
+      .hero-cta a {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.92rem;
+      }
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.85rem;
+      }
+      .cert-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.85rem;
+      }
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.85rem;
+      }
+      .contact-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+      }
+      .contact-form-card {
+        padding: 1.25rem;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      .footer-brand {
+        grid-column: 1 / -1;
+        text-align: center;
+      }
+      .footer-brand > div {
+        justify-content: center;
+      }
+    }
+
+    /* ============================================
+       BREAKPOINT: LARGE MOBILE (480px–767px)
+       ============================================ */
+    @media (max-width: 600px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      .cert-grid {
+        grid-template-columns: 1fr;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-cards {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+      }
+      .featured-card {
+        padding: 1.1rem;
+      }
+      .featured-title {
+        font-size: clamp(1.5rem, 6vw, 2.1rem);
+      }
+      .project-card {
+        min-height: auto;
+      }
+      .project-card .project-image {
+        min-height: 200px;
+      }
+    }
+
+    /* ============================================
+       BREAKPOINT: MOBILE (375px–479px)
+       ============================================ */
+    @media (max-width: 479px) {
+      .section-shell {
+        padding: 3.5rem 0.85rem;
+      }
+      .section-shell h2 {
+        font-size: clamp(1.55rem, 7vw, 2rem);
+      }
+      .section-shell > div > .kicker {
+        font-size: 0.65rem;
+        letter-spacing: 0.12em;
+      }
+      .section-shell > div > .kicker::before,
+      .section-shell > div > .kicker::after {
+        width: 18px;
+      }
+      .hero-section {
+        padding-top: 3.5rem;
+        padding-bottom: 1.5rem;
+      }
+      .hero-title {
+        font-size: clamp(1.45rem, 6.5vw, 1.9rem);
+        line-height: 1.2;
+      }
+      .hero-sub {
+        font-size: 0.92rem;
+        line-height: 1.6;
+      }
+      .hero-cta a {
+        padding: 0.65rem 1.1rem;
+        font-size: 0.88rem;
+      }
+      .featured-card {
+        padding: 0.95rem;
+        border-radius: 1.25rem;
+      }
+      .featured-title {
+        font-size: clamp(1.4rem, 6vw, 1.85rem);
+      }
+      .skill-tile {
+        padding: 1.1rem 0.9rem;
+      }
+      .skill-logo {
+        width: 42px;
+        height: 42px;
+        margin-bottom: 0.75rem;
+      }
+      .skill-tile h4 {
+        font-size: 0.95rem;
+      }
+      .cert-card {
+        padding: 1.1rem;
+      }
+      .cert-card h3 {
+        font-size: 1.1rem;
+      }
+      .contact-card-item {
+        padding: 1rem;
+      }
+      .contact-card-item b {
+        font-size: 0.95rem;
+        word-break: break-word;
+      }
+      .contact-input,
+      .contact-textarea {
+        font-size: 0.92rem;
+        padding: 0.75rem 0.95rem;
+      }
+      .footer-wrap {
+        padding: 2.25rem 0.85rem 1.5rem;
+      }
+      .slide-menu-panel {
+        width: min(92vw, 320px);
+      }
+    }
+
+    /* ============================================
+       BREAKPOINT: MOBILE SMALL (320px–374px)
+       ============================================ */
+    @media (max-width: 374px) {
+      .section-shell {
+        padding: 3rem 0.7rem;
+      }
+      .section-shell h2 {
+        font-size: 1.4rem;
+      }
+      .section-shell > div > .kicker {
+        font-size: 0.6rem;
+      }
+      .hero-title {
+        font-size: 1.35rem;
+      }
+      .hero-sub {
+        font-size: 0.85rem;
+      }
+      .hero-cta {
+        flex-direction: column;
+        width: 100%;
+      }
+      .hero-cta a {
+        width: 100%;
+        text-align: center;
+        padding: 0.7rem 0.9rem;
+        font-size: 0.85rem;
+      }
+      .hero-badge {
+        font-size: 0.72rem;
+        padding: 0.4rem 0.7rem;
+      }
+      .featured-title {
+        font-size: 1.3rem;
+      }
+      .featured-card {
+        padding: 0.85rem;
+      }
+      .profile-ring {
+        width: 8rem;
+        height: 8rem;
+      }
+      .nav-glass nav {
+        padding: 0.2rem 0;
+      }
+      .nav-logo {
+        height: 2.2rem !important;
+      }
+      .nav-toggle {
+        width: 40px;
+        height: 40px;
+      }
+      .slide-menu-panel {
+        width: 92vw;
+        padding: 1rem;
+      }
+    }
+
+    /* ============================================
+       HERO SECTION SPECIFIC
+       ============================================ */
+    .hero-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1.25rem 3rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-title {
+      font-size: clamp(1.85rem, 5.5vw, 3.75rem);
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      max-width: 64ch;
+      margin: 1rem auto 0;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 2.2vw, 1.25rem);
+      line-height: 1.7;
+      max-width: 60ch;
+      margin: 1rem auto 0;
+    }
+
+    .hero-greeting {
+      font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+      margin-top: 1.75rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 1.25rem;
+    }
+
+    .hero-badge {
+      font-size: clamp(0.78rem, 1.6vw, 0.95rem);
+      padding: 0.5rem 1rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.85rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero-cta a {
+      padding: 0.85rem 1.75rem;
+      font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+    }
+
+    .profile-ring {
+      width: clamp(8rem, 22vw, 11rem);
+      height: clamp(8rem, 22vw, 11rem);
+    }
+
+    /* ============================================
+       SKILLS GRID
+       ============================================ */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    /* ============================================
+       CERTIFICATIONS GRID
+       ============================================ */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .cert-card {
+      padding: 1.5rem 1.1rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    /* ============================================
+       PROJECTS
+       ============================================ */
+    .featured-card {
+      padding: 1.5rem;
+      border-radius: 1.5rem;
+    }
+
+    .featured-title {
+      font-size: clamp(1.6rem, 3.5vw, 3rem);
+      line-height: 1.15;
+    }
+
+    .featured-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+
+    .projects-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @media (max-width: 1199px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* ============================================
+       CONTACT
+       ============================================ */
+    .contact-grid {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: 0.9fr 1.1fr;
+    }
+
+    .contact-cards {
+      display: grid;
+      gap: 0.85rem;
+      grid-template-columns: 1fr;
+    }
+
+    .contact-card-item {
+      padding: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      word-break: break-word;
+    }
+
+    .contact-card-item b {
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-form-card {
+      padding: 1.5rem;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .contact-input,
+    .contact-textarea {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      font-size: 0.95rem;
+      padding: 0.85rem 1.1rem;
+    }
+
+    .contact-form-fields > label {
+      min-width: 0;
+    }
+
+    @media (max-width: 1199px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        width: 100%;
+      }
+
+      .contact-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .contact-form-card {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .contact-cards,
+      .contact-form-fields {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        gap: 1.15rem;
+      }
+
+      .contact-form-card {
+        border-radius: 1.5rem;
+        padding: 1.1rem;
+      }
+    }
+
+    /* ============================================
+       GITHUB SECTION
+       ============================================ */
+    .github-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer-wrap {
+      padding: 3rem 1.25rem 1.75rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 2.5rem;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .footer-brand > div {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* ============================================
+       NAV TOGGLE (Hamburger)
+       ============================================ */
+    .nav-toggle {
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .nav-toggle:hover,
+    .nav-toggle:focus-visible {
+      background: rgba(168, 85, 247, 0.15);
+      outline: none;
+    }
+
+    .nav-toggle svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    /* ============================================
+       REDUCED MOTION
+       ============================================ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* Prevent body scroll when menu open */
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    /* ============================================
+       STANDARDIZED BUTTON STYLES
+       ============================================ */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 1.5rem;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 1.5rem;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.05);
+      outline: none;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary:active {
+      transform: translateY(0);
+    }
+
+    /* ============================================
+       STANDARDIZED CARD STYLES
+       ============================================ */
+    .card-base {
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 1.25rem;
+      transition: all 0.3s ease;
+    }
+
+    .card-base:hover {
+      transform: translateY(-4px);
+      border-color: rgba(168, 85, 247, 0.3);
+      box-shadow: 0 12px 40px rgba(168, 85, 247, 0.15);
+    }
+
+    @media (min-width: 640px) {
+      .card-base {
+        border-radius: 1.75rem;
+        padding: 1.5rem;
+      }
+    }
+
+    /* ============================================
+       IMPROVED TYPOGRAPHY HIERARCHY
+       ============================================ */
+    .text-h1 {
+      font-size: clamp(1.85rem, 5.5vw, 3.75rem);
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      font-weight: 700;
+    }
+
+    .text-h2 {
+      font-size: clamp(1.75rem, 4.5vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      font-weight: 600;
+    }
+
+    .text-h3 {
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      font-weight: 600;
+    }
+
+    .text-body {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+    }
+
+    .text-caption {
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+      line-height: 1.5;
+      letter-spacing: 0.02em;
+    }
+
+    /* Improved readability */
+    p, span, div {
+      max-width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    /* Focus ring for accessibility */
+    .focus-ring:focus-visible {
+      outline: 2px solid rgba(168, 85, 247, 0.6);
+      outline-offset: 2px;
+    }
+
+    .focus-ring:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    /* ============================================
+       IMPROVED ANIMATIONS
+       ============================================ */
+    .fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    .slide-up {
+      animation: slideUp 0.6s ease-out forwards;
+    }
+
+    .scale-in {
+      animation: scaleIn 0.4s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Stagger animation delays */
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
+    .stagger-5 { animation-delay: 0.5s; }
+
+    /* ============================================
+       CONSISTENT SPACING SYSTEM
+       ============================================ */
+    .spacing-xs { gap: 0.5rem; }
+    .spacing-sm { gap: 0.75rem; }
+    .spacing-md { gap: 1rem; }
+    .spacing-lg { gap: 1.5rem; }
+    .spacing-xl { gap: 2rem; }
+    .spacing-2xl { gap: 2.5rem; }
+
+    .margin-xs { margin: 0.5rem; }
+    .margin-sm { margin: 0.75rem; }
+    .margin-md { margin: 1rem; }
+    .margin-lg { margin: 1.5rem; }
+    .margin-xl { margin: 2rem; }
+
+    .padding-xs { padding: 0.5rem; }
+    .padding-sm { padding: 0.75rem; }
+    .padding-md { padding: 1rem; }
+    .padding-lg { padding: 1.5rem; }
+    .padding-xl { padding: 2rem; }
+  </style>
+  </head>
+
+  <body>
     <div id="root"></div>
-    <div class="fixed top-0 right-0 w-11/12 -z-10  translate-y-[-80%]
-    dark:hidden">
-        <img src="header-bg-color.png" alt=""  class="w-full">
-    </div>
-    <nav class="w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex
-    items-center justify-between z-50">
-        <img src="D.logo.png" alt="Logo"
-        class="w-28 cursor-pointer mr-14 dark:hidden">
 
-        <img src="d.logodark.png" alt="Logo "
-        class="w-28 cursor-pointer mr-14 hidden dark:block">
+    <script type="text/babel">
+    const { useState, useEffect } = React;
+    // Basic runtime error handler to surface exceptions in the page during development
+    try {
+      console.log('App script initializing');
+      window.addEventListener('error', function (ev) {
+        try {
+          const root = document.getElementById('root');
+          if (root) root.innerHTML = `<div style="padding:20px;color:#fff;background:#111;font-family:sans-serif;
+            white-space:pre-wrap;">JavaScript error:\n${String(ev.message || ev.error || ev).slice(0,1000)}</div>`;
+        } catch (e) { /* ignore */ }
+        console.error(ev.error || ev.message || ev);
+      });
+    } catch (e) {
+      console.error('Error setting up error handler', e);
+    }
+    const framer = window.framerMotion || window.FramerMotion || {};
+    const fallbackMotion = new Proxy({}, {
+      get: (_, tag) => ({ children, initial, animate, whileInView, viewport, transition, ...props }) =>
+        React.createElement(tag, props, children)
+    });
+    const motion = framer.motion || fallbackMotion;
+    const AnimatePresence = framer.AnimatePresence || (({ children }) => children);
 
-        <ul class="hidden md:flex item-center gap-6 lg:gap-8 rounded-full px-12
-         py-3 bg-white shadow-sm bg-opacity-50 font-Ovo
-         dark:border dark:border-white/50 dark:bg-transparent">
-            <li><a href="#header">Home</a></li>
-            <li><a href="#about">About me</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#work">My Work</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-           <div class="flex items-center gap-4">
-            <button onclick="toggleTheme()">
-                <img src="moon_icon.png" alt="" class="w-6 dark:hidden">
-                <img src="sun_icon.png" alt="" class="w-6 hidden dark:block">
-            </button>
+    const navItems = [
+      ['About', '#about'],
+      ['Skills', '#skills'],
+      ['Projects', '#projects'],
+      ['Certifications', '#certifications'],
+      ['GitHub', '#github'],
+      ['Contact', '#contact']
+    ];
 
-            <a href="#contact" 
-            class="hidden lg:flex items-center gap-3 px-10 py-10  py-2.5 border  
-            border-gray-500 rounded-full ml-4 font-Ovo dark:border-white/50">
-            Contact 
-             <img src="arrow-icon.png" alt=""  class="w-3 dark:hidden">
-             <img src="arrow-icon-dark.png" alt=""  class="w-3 hidden dark:block">
-            </a>
+    const seeking = ['AI/ML Internship', 'Python Developer', 'Cloud Support', 'IT Support'];
 
-            <button class="block md:hidden ml-3" onclick="openMenu()">
-                <img src="menu-black.png" alt="" class="w-6 dark:hidden">
-                <img src="menu-white.png" alt="" class="w-6 hidden dark:block">
-            </button>
-        </div>
-<!------mobile menu ------------>
-<ul id="sideMenu" class="flex md:hidden flex-col gap-4 py-20 
-px-10 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen 
- bg-rose-50 transition duration-500 font-Ovo dark:bg-darkHover dark:text-white">
-  
-<div class="absolute right-6 top-6" onclick="closeMenu()">
-    <img src="close-black.png" alt="" class="w-5 
-    cursor-pointer daek:hidden">
+    const aboutPoints = [
+      'MCA student specializing in Artificial Intelligence and Machine Learning.',
+      'BCA background in Computer Programming with practical project experience.',
+      'Focused on Python, AI/ML foundations, AWS, Linux, deployment, and technical support.',
+      'Career goal: contribute as a fresher/intern in AI/ML, Python, cloud, or IT support teams.'
+    ];
 
-    <img src="close-white.png" alt="" class="w-5 cursor-pointer hidden dark:block">
-</div>
+    const academicSteps = [
+      {
+        id: 'step1',
+        title: 'Higher Secondary Education (Class 12)',
+        duration: 'June 2020 – February 2022',
+        score: '81.00%',
+        status: 'Completed',
+        icon: '🎓',
+        color: 'from-sky-500 to-blue-500',
+        specialization: 'Information Technology',
+        learning: 'Built strong programming and database fundamentals through coursework and labs.',
+        stream: 'Information Technology',
+        chips: ['Information Technology'],
+        keyLearning: [
+          'Programming fundamentals',
+          'Computer basics',
+          'Networking basics',
+          'Database fundamentals'
+        ],
+        majorSubjects: [],
+        academicHighlights: [],
+        projects: []
+      },
+      {
+        id: 'step2',
+        title: 'Bachelor of Computer Applications (BCA)',
+        institution: 'D Y Patil International University, Akurdi, Pune',
+        duration: 'September 2022 – May 2025',
+        score: '6.5 CGPA',
+        status: 'Completed',
+        icon: '🏛️',
+        color: 'from-violet-500 to-fuchsia-500',
+        specialization: 'Cloud Computing',
+        learning: 'Built cloud-native solutions and practiced infrastructure concepts through Python and web technology projects.',
+        chips: ['Software Development', 'Python Programming', 'Linux Administration', 'Web Technologies'],
+      },
+      {
+        id: 'step3',
+        title: 'Master of Computer Applications (MCA)',
+        institution: 'Sri Balaji University, Pune',
+        duration: 'July 2025 – May 2027',
+        score: '7.5 CGPA',
+        status: 'Currently Pursuing',
+        icon: '🧠',
+        color: 'from-fuchsia-500 via-violet-500 to-sky-500',
+        specialization: 'Artificial Intelligence & Machine Learning',
+        learning: 'Exploring ML models and practical AI pipelines through coursework and mini-projects.',
+        chips: ['Artificial Intelligence', 'Machine Learning', 'Operating Systems', 'Computer Networks', 'Database Management'],
+      }
+    ];
 
-    <li><a href="#header"onclick="closeMenu()">Home</a></li>
-    <li><a href="#about"onclick="closeMenu()">About me</a></li>
-    <li><a href="#services"onclick="closeMenu()">Services</a></li>
-    <li><a href="#work"onclick="closeMenu()">My Work</a></li>
-    <li><a href="#contact"onclick="closeMenu()">Contact</a></li>
-</ul>
-    </nav>
+    const skillGroups = [
 
-<!-------header-------->
+      {
+        category: 'Core Skills',
+        skills: [
+          ['Python', 'https://cdn.simpleicons.org/python/3776AB'],
+          ['Problem Solving', 'problem-solving.png'],
+          ['OOP Basics', 'code-icon.png'],
+          ['Linux Basics', 'https://cdn.simpleicons.org/linux/FCC624']
+        ]
+      },
+      {
+        category: 'AI/ML',
+        skills: [
+          ['NumPy', 'https://cdn.simpleicons.org/numpy/4D77CF'],
+          ['Pandas', 'https://cdn.simpleicons.org/pandas/FFFFFF'],
+          ['Scikit-learn', 'https://cdn.simpleicons.org/scikitlearn/F7931E'],
+          ['Data Preprocessing', 'graphics-icon.png']
+        ]
+      },
+      {
+        category: 'Cloud',
+        skills: [
+          ['AWS EC2', 'aws.png?v=3'],
+          ['AWS S3', 'aws.png?v=3'],
+          ['AWS IAM', 'aws.png?v=3'],
+          ['AWS Lambda', 'aws.png?v=3']
+        ]
+      },
+      {
+        category: 'Databases',
+        skills: [
+          ['MySQL', 'https://cdn.simpleicons.org/mysql/4479A1'],
+          ['PostgreSQL', 'https://cdn.simpleicons.org/postgresql/4169E1'],
+          ['MongoDB Basics', 'mongodb.png'],
+          ['Firebase Basics', 'firebase.png']
+        ]
+      },
+      {
+        category: 'Web Development',
+        skills: [
+          ['HTML5', 'https://cdn.simpleicons.org/html5/E34F26'],
+          ['CSS3', 'https://cdn.simpleicons.org/css/1572B6'],
+          ['JavaScript', 'https://cdn.simpleicons.org/javascript/F7DF1E'],
+          ['Responsive UI', 'web-icon.png']
+        ]
+      },
+      {
+        category: 'DevOps & Tools',
+        skills: [
+          ['Git', 'git.png'],
+          ['GitHub', 'https://cdn.simpleicons.org/github/FFFFFF'],
+          ['Docker Basics', 'https://cdn.simpleicons.org/docker/2496ED'],
+          ['VS Code', 'vscode.png']
+        ]
+      }
+    ];
 
-<div id="header" class="w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col 
-items-center justify-center gap-4 scroll-mt-10">
-    <img src="dk-profile.png" alt=""class="rounded-full w-32 mt-20">
-    <h3 class="flex items-end gap-2 text-xl md:text-2xl mb-3 font-Ovo">
-         Hi I'm Dhananjay Khaire <img src="hand-icon.png" alt="" class="w-6"></h3>
-    <h1 class="text-3xl sm:text-6xl lg:text-[66px] font-Ovo">Frontend Web Developer based in 
-        India.</h1>
-    <p class="max-w-2xl mx-auto font-Ovo">I am a BCA 3rd-year  student and  a frontend developer, 
-    HTML, CSS, JavaScript, and popular frameworks like React. </p>
+    const categoryLogos = {
+      'cloud': 'cloud-icon.png',
+      'ai-ml': 'https://cdn.simpleicons.org/tensorflow/FF6F00',
+      'web-dev': 'https://cdn.simpleicons.org/react/61DAFB'
+    };
 
-  <div class="flex flex-col sm:flex-row items-center gap-7 mt-4">
-    <a href="#contact" class="px-10 py-3 border rounded-full bg-gradient-to-r from-[#b820e6] to-[#da7d20] text-white  flex items-center gap-2 dark:border-tranparent">
-    contact me <img src="right-arrow-white.png"  alt=""  class="w-4"></a>
+    const featured = {
+      title: 'AWS Resource Tracker',
+      description: 'Cloud infrastructure monitoring tool for tracking AWS resource usage and costs across multiple services.',
+      problem: 'Organizations struggle to monitor and optimize AWS resource spending across different services and regions.',
+      solution: 'Developed a tracking system using AWS SDK and Python to monitor EC2, S3, and Lambda resources with real-time cost analysis.',
+      impact: 'Helps teams identify cost optimization opportunities and improve cloud resource management efficiency.',
+      stack: ['Python', 'AWS SDK', 'Boto3', 'Cost Explorer', 'Lambda'],
+      image: 'aws.png',
+      repo: 'https://github.com/Dhananjaykhaire',
+      live: '#projects',
+      category: 'cloud'
+    };
 
-     <a href="DhananjayKhaireResume.pdf" download
-     class="px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2 bg-white dark:text-black">
-     My resume <img src="download-icon.png"
-      alt=""  class="w-4"></a>
-  </div>
-</div>
+    const initialProjects = [
+      {
+        title: 'Attendance Management System',
+        description: 'Student attendance tracking concept for academic record management.',
+        problem: 'Reduces manual tracking and improves basic record visibility.',
+        stack: ['Python', 'Database Basics', 'UI Flow'],
+        image: 'work-3.png',
+        repo: 'https://github.com/Dhananjaykhaire/attendify',
+        live: 'https://github.com/Dhananjaykhaire/Attendance-Management-System',
+        category: 'web-dev'
+      },
+      {
+        title: 'Fund-In Project',
+        description: 'Crowdfunding concept for campaign discovery and funding flow.',
+        problem: 'Organizes fundraising ideas into a clearer donor and creator experience.',
+        stack: ['Frontend', 'JavaScript', 'Firebase Basics'],
+        image: 'work-4.png',
+        repo: 'https://github.com/Dhananjaykhaire/FUND-IN',
+        live: 'https://dhananjaykhaire.github.io/FUND-IN/',
+        category: 'web-dev'
+      },
+      {
+        title: 'Portfolio Website',
+        description: 'Personal portfolio rebuilt for recruiter clarity and internship conversion.',
+        problem: 'Presents skills, resume, projects, and contact paths in one polished place.',
+        stack: ['React', 'Tailwind', 'Framer Motion', 'Node API'],
+        image: 'work-1.png',
+        repo: 'https://github.com/Dhananjaykhaire/Portfolio',
+        live: 'https://dhananjaykhaire.github.io/Portfolio/',
+        category: 'web-dev'
+      },
+      {
+        title: 'Tourism Website',
+        description: 'Basic frontend tourism website built with HTML, CSS, and JavaScript for destination browsing.',
+        problem: 'Showcases travel destinations and site navigation using a clean static frontend layout.',
+        stack: ['HTML', 'CSS', 'JavaScript'],
+        image: 'work-2.png',
+        repo: 'https://github.com/Dhananjaykhaire/Toursim-website',
+        live: 'https://dhananjaykhaire.github.io/Toursim-website/',
+        category: 'web-dev'
+      },
+      {
+        title: 'Smart Crop Recommendation System',
+        description: 'AI/ML project concept focused on recommending suitable crops from input conditions using a beginner-friendly ML workflow.',
+        problem: 'Helps convert agricultural inputs into a practical recommendation flow for learning and real-world experimentation.',
+        solution: 'Building a machine learning model using Scikit-learn to analyze soil and weather data for crop recommendations.',
+        impact: 'Will help farmers make data-driven decisions for crop selection based on environmental conditions.',
+        stack: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'Deployment'],
+        image: 'smart-crop.png',
+        repo: 'https://github.com/Dhananjaykhaire',
+        live: '#projects',
+        isUpcoming: true,
+        category: 'ai-ml'
+      }
+    ];
 
-<!-------------about me---------->
-<div id="about" class="w-full px-[12%] py-10 scroll-mt-20">
-    <h4 class="text-center mb-2 text-lg">Introduction</h4>
-    <h2 class="text-center text-5xl font-Ovo">About me</h2>
+    const upcomingProjects = [
+      {
+        title: 'Voice Cloning Project',
+        description: 'AI-powered voice synthesis system for generating natural speech from text input using deep learning.',
+        problem: 'Creating realistic voice clones for accessibility, content creation, and personalized voice assistants.',
+        solution: 'Developing a deep learning model using TensorFlow to synthesize natural speech from text input.',
+        impact: 'Will enable accessibility features, content creation tools, and personalized voice assistants.',
+        stack: ['Python', 'TensorFlow', 'Deep Learning', 'Audio Processing'],
+        image: 'voice-cloning.png',
+        repo: 'https://github.com/Dhananjaykhaire',
+        live: '#projects',
+        isUpcoming: true,
+        category: 'ai-ml'
+      }
+    ];
 
-    <div class="flex w-full flex-col lg:flex-row items-center gap-20 my-20">
-        <div class="max-w-max mx-auto relative">
-            <img src="Duser.jpg" alt="" class="w-64 sm:w-80
-            rounded-3xl max-w-none">
+    const allProjects = [...initialProjects, ...upcomingProjects];
 
-            <div class="bg-white w-1/2 aspect-square absolute right-0 bottom-0
-            rounded-full translate-x-1/4 translate-y-1/3 shadow-[0_4px_55px_rgba(149,0,162,0.15)] 
-            flex items-center justify-center">
-                 <img src="circular-text.png" alt="" class="w-full
-                 animate-spin_slow">
-                 <img src="dev_icon.png" alt="" class="w-1/4 absolute top-1/2 
-                 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            </div>
-        </div>
-        <div class="flex-1">
-            <p class="mb-10 max-w-2xl font-Ovo">As a final-year BCA student and passionate frontend developer
-                 with a foundational knowledge of AWS, XML, and Java, I have honed my skills through two internships in web development,
-                  where I gained hands-on experience and practical insights into building dynamic, user-centric web applications.
-                </p>
-            <ul class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl">
-                <li  class="border-[0.5px] border-gray-400 rounded-xl p-6
-                 cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500 
-                 hover:shadow-black
-                 dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50">
-                    <img src="code-icon.png" alt="" class="w-7 mt-3
-                    dark:hidden">
-                    <img src="code-icon-dark.png" alt="" class="w-7 mt-3
-                    hidden dark:block">
+    const certifications = [
+      ['AWS', 'Cloud fundamentals, EC2, S3, IAM', 'https://www.linkedin.com/in/dhananjay-khaire-ab1414255/'],
+      ['Python', 'Programming, OOP, scripting', 'https://www.linkedin.com/learning/certificates/fc487c1bd32bd45afd96cac793cfdc58f54b0c2c03238b5865c6cd2702a67cfc?u=351586674'],
+      ['Linux', 'Commands, shell, permissions', 'https://www.linkedin.com/learning/certificates/dffdc5bd02be29c477eb09ad74308a6fd1d7becccf8e523c150933104407fda6?u=351586674'],
+      ['Networking', 'IP, DNS, routing, troubleshooting', 'https://www.linkedin.com/learning/certificates/a19d3c35e639211448c416ac25ab85d45db670508203739c296f0259031729e9?u=351586674']
+    ];
 
-                    <h3 class="my-4 font-semibold text-gray-700 
-                    dark:text-white">Languages</h3>
-                    <p class="text-gray-600 text-sm dark:text-white/80">HTML, CSS, Javascript React Js, </p>
-                </li>
-                <li  class="border-[0.5px] border-gray-400 rounded-xl p-6
-                cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500 
-                hover:shadow-black  
-                dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50
-                ">
-                   <img src="edu-icon.png" alt="" class="w-7 mt-3  dark:hidden">
-                   <img src="edu-icon-dark.png" alt="" class="w-7 mt-3 hidden dark:block">
+    const pinnedRepos = [
+      {
+        name: 'Portfolio Website',
+        description: 'React, Tailwind, Framer Motion',
+        href: 'https://github.com/Dhananjaykhaire',
+        language: 'JavaScript',
+        languageIcon: 'https://cdn.simpleicons.org/javascript/F7DF1E',
+        stars: '15',
+        forks: '2'
+      },
+      {
+        name: 'Tourism Website',
+        description: 'HTML, CSS, JavaScript',
+        href: 'https://github.com/Dhananjaykhaire/Toursim-website',
+        language: 'HTML',
+        languageIcon: 'https://cdn.simpleicons.org/html5/E34F26',
+        stars: '8',
+        forks: '1'
+      },
+      {
+        name: 'Attendance Management',
+        description: 'Python, Database Basics',
+        href: 'https://github.com/Dhananjaykhaire/Attendance-Management-System',
+        language: 'Python',
+        languageIcon: 'https://cdn.simpleicons.org/python/3776AB',
+        stars: '5',
+        forks: '1'
+      }
+    ];
 
-                   <h3 class="my-4 font-semibold text-gray-700  dark:text-white/80">Education</h3>
-                   <p class="text-gray-600 text-sm  dark:text-white/80">Pursuing BCA in DY Patil International University</p>
-               </li>
-               <li  class="border-[0.5px] border-gray-400 rounded-xl p-6
-               cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500 
-               hover:shadow-black  
-                dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50
-                ">
+    function Section({ id, kicker, title, children }) {
+      return (
+        <motion.section id={id} className="section-shell text-center"
+          initial={{ opacity: 0, y: 36 }} whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: .18 }} transition={{ duration: .65 }}>
+          <div className="kicker">{kicker}</div>
+          <h2 className="title-glow mt-4 font-Ovo text-4xl text-white sm:text-6xl">{title}</h2>
+          <div className="mt-12">{children}</div>
+        </motion.section>
+      );
+    }
 
-                  <img src="project-icon.png" alt="" class="w-7 mt-3 dark:hidden">
-                  <img src="project-icon-dark.png" alt="" class="w-7 mt-3 hidden dark:block">
+    function Header() {
+      const [open, setOpen] = useState(false);
+      const [isScrolled, setIsScrolled] = useState(false);
+      const [navHidden, setNavHidden] = useState(false);
+      const [activeSection, setActiveSection] = useState('header');
 
-                  <h3 class="my-4 font-semibold text-gray-700  dark:text-white/80">Projects</h3>
-                  <p class="text-gray-600 text-sm  dark:text-white/80">Built more than 5 projects</p>
-              </li>
-            </ul>
-            <h4 class="my-6 text-gray-700 font-Ovo  dark:text-white/80">Tools i use</h4>
+      useEffect(() => {
+        let lastScrollY = window.scrollY;
+        const handleScroll = () => {
+          const currentY = window.scrollY;
+          setIsScrolled(currentY > 28);
 
-            <ul class="flex items-center gap-3 sm:gap-5">
-                <li class="flex items-center justify-center w-12 sm:w-14
-                aspect-square border border-gray-400 rounded-lg cursor-pointer
-                hover:-translate-y-1 duration-500 ">
-                    <img src="vscode.png" alt="" class="w-5 sm:w-7">
-                </li>
-                <li class="flex items-center justify-center w-12 sm:w-14
-                aspect-square border border-gray-400 rounded-lg cursor-pointer
-                hover:-translate-y-1 duration-500">
-                    <img src="firebase.png" alt="" class="w-5 sm:w-7">
-                </li>
-                <li class="flex items-center justify-center w-12 sm:w-14
-                aspect-square border border-gray-400 rounded-lg cursor-pointer
-                hover:-translate-y-1 duration-500">
-                    <img src="git.png" alt="" class="w-5 sm:w-7">
-                </li>
-                <li class="flex items-center justify-center w-12 sm:w-14
-                aspect-square border border-gray-400 rounded-lg cursor-pointer
-                hover:-translate-y-1 duration-500">
-                    <img src="mongodb.png" alt="" class="w-5 sm:w-7">
-                </li>
-                <li class="flex items-center justify-center w-12 sm:w-14
-                aspect-square border border-gray-400 rounded-lg cursor-pointer
-                hover:-translate-y-1 duration-500">
-                    <img src="figma.png" alt="" class="w-5 sm:w-7">
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+          // Hide on scroll down, show on scroll up
+          if (currentY > lastScrollY && currentY > 120) {
+            setNavHidden(true);
+          } else {
+            setNavHidden(false);
+          }
+          lastScrollY = currentY;
 
-<!------------Services-------------->
-<div id="services" class="w-full px-[12%] py-10 scroll-mt-20">
-    <h4 class="text-center mb-2 text-lg font-Ovo">What i offer</h4>
-    <h2 class="text-center text-5xl font-Ovo">My services</h2>
-    <p class="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo"> Offering expert services in front-end web development,
-        crafting responsive and dynamic websites with a focus on UI/UX design. Skilled in Android development, 
-        delivering seamless mobile applications, and proficient in cloud computing solutions to ensure scalable 
-        and secure deployments. </p>
+          // Active section detection
+          const sections = navItems.map(([_, href]) => href.replace('#', ''));
+          let current = 'header';
+          for (const id of sections) {
+            const el = document.getElementById(id);
+            if (el) {
+              const rect = el.getBoundingClientRect();
+              if (rect.top <= 120 && rect.bottom >= 120) {
+                current = id;
+                break;
+              }
+            }
+          }
+          setActiveSection(current);
+        };
 
-    <div class="grid grid-cols-auto gap-6 my-10">
-    <div class="border border-gray-400 rounded-lg px-8 py-12
-    hover:shadow-black cursor-pointer hover:bg-[#fcf4ff]
-    hover:-translate-y-1 duration-500  hover:shadow-black  
-    dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50">
+        const handleKeydown = (event) => {
+          if (event.key === 'Escape' && open) {
+            setOpen(false);
+          }
+        };
 
-    <img src="web-icon.png" alt="" class="w-10">
-    <h3 class="text-lg my-4 text-gray-700 dark:text-white/80">Web design</h3>
-    <p class="text-sm text-gray-600 leading-5 dark:text-white/80">Web development is the
-    process of building, programming...</p>
-    <a href="" class="flex items-center gap-2 text-sm mt-5">Read more <img src="right-arrow.png" alt=""
-    class="w-4"></a>
-    </div>
-    <div class="border border-gray-400 rounded-lg px-8 py-12
-    hover:shadow-black cursor-pointer hover:bg-[#fcf4ff]
-    hover:-translate-y-1 duration-500  hover:shadow-black  
-    dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50
-    ">
-    <img src="mobile-icon.png" alt="" class="w-10">
-    <h3 class="text-lg my-4 text-gray-700 dark:text-white/80">Mobile app</h3>
-    <p class="text-sm text-gray-600 leading-5 dark:text-white/80">App development is the
-    process of building, programming...</p>
-    <a href="" class="flex items-center gap-2 text-sm mt-5">Read more <img src="right-arrow.png" alt=""
-    class="w-4"></a>
-    </div>
-    <div class="border border-gray-400 rounded-lg px-8 py-12
-    hover:shadow-black cursor-pointer hover:bg-[#fcf4ff]
-    hover:-translate-y-1 duration-500  hover:shadow-black  
-    dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50
-    ">
-    <img src="ui-icon.png" alt="" class="w-10">
-    <h3 class="text-lg my-4 text-gray-700 dark:text-white/80">UI/UX desgin</h3>
-    <p class="text-sm text-gray-600 leading-5 dark:text-white/80">Web development is the
-    process of building, programming...</p>
-    <a href="" class="flex items-center gap-2 text-sm mt-5">Read more <img src="right-arrow.png" alt=""
-    class="w-4"></a>
-    </div>
-    <div class="border border-gray-400 rounded-lg px-8 py-12
-    hover:shadow-black cursor-pointer hover:bg-[#fcf4ff]
-    hover:-translate-y-1 duration-500  hover:shadow-black  
-    dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50
-    ">
-    <img src="cloud-icon.png" alt="" class="w-10">
-    <h3 class="text-lg my-4 text-gray-700 dark:text-white/80">Cloud Computing</h3>
-    <p class="text-sm text-gray-600 leading-5 dark:text-white/80">Cloud Computing is provides various things like Database, 
-        Storage, Deployment, Virtual Network.</p>
-    <a href="" class="flex items-center gap-2 text-sm mt-5">Read more <img src="right-arrow.png" alt=""
-    class="w-4"></a>
-    </div>
- </div>
-</div>
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('keydown', handleKeydown);
+        handleScroll();
 
-<!-----------------my work------------->
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+          window.removeEventListener('keydown', handleKeydown);
+        };
+      }, [open]);
 
-<div id="work" class="w-full px-[12%] py-10 scroll-mt-20">
-    <h4 class="text-center mb-2 text-lg font-Ovo">My Portfolio</h4>
-    <h2 class="text-center text-5xl font-Ovo">My latest work</h2>
-    <p class="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo">Welcome to my web
-    development portfolio! Explore a collection of projects showcasing my expertise 
-    in front-end development.</p>
+      useEffect(() => {
+        if (open) {
+          document.body.classList.add('menu-open');
+        } else {
+          document.body.classList.remove('menu-open');
+        }
+        return () => {
+          document.body.classList.remove('menu-open');
+        };
+      }, [open]);
 
-    <div class="grid grid-cols-auto my-10 gap-5">
-        <div class="aspect-square bg-[url('work-1.png')] bg-no-repeat
-        bg-cover bg-center rounded-lg relative cursor-pointer group">
-        <div class="bg-white w-11/12 rounded-md absolute bottom-5 left-1/2
-        -translate-x-1/2 py-3 px-5 flex items-center justify-between
-        duration-500 group-hover:bottom-7">
-        <div class="absolute inset-0">
-            <a href="https://dhananjaykhaire.github.io/Toursim-website/" target="_blank"
-             class="block w-full h-full"></a>
-          </div>
-            <div>
-                <h2 class="font-semibold dark:text-black/80">Frontend Projects</h2>
-                <p class="text-sm text-gray-700 dark:text-black/80">Toursim Website </p>
-            </div>
-              <div class="border rounded-full border-black w-9 aspect-square flex
-              items-center justify-center shadow-[2px_2px_0_#000]
-              group-hover:bg-blue-300 transition">
-                <img src="send-icon.png" alt="" class="w-5">
+      const navIcons = {
+        'About': 'user',
+        'Skills': 'sparkles',
+        'Projects': 'folder',
+        'Certifications': 'award',
+        'GitHub': 'github',
+        'Contact': 'mail'
+      };
+
+      const LucideIcon = ({ name, size = 22, className = '' }) => {
+        // Render icon via lucide CDN's createIcons / or inline SVG fallback
+        if (window.lucide && window.lucide.icons && window.lucide.icons[name]) {
+          // lucide UMD exposes icons with createElement helpers
+          return null; // use inline SVG below instead
+        }
+        return null;
+      };
+
+      const InlineIcon = ({ name, size = 22, className = '' }) => {
+        const paths = {
+          menu: <><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></>,
+          x: <><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></>,
+          user: <><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></>,
+          sparkles: <><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></>,
+          folder: <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>,
+          award: <><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.11"/></>,
+          github: <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>,
+          mail: <><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></>,
+          arrow: <><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></>
+        };
+        return (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={size}
+            height={size}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className={className}
+            aria-hidden="true"
+          >
+            {paths[name] || null}
+          </svg>
+        );
+      };
+
+      return (
+        <>
+          <motion.header
+            className={`fixed inset-x-0 top-0 z-50 nav-glass ${isScrolled ? 'nav-scrolled' : ''} ${navHidden && !open ? 'nav-hidden' : ''}`}
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+          >
+            <nav className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-8 sm:py-5">
+              <motion.a
+                href="#header"
+                className="flex items-center gap-3"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+              >
+                <img src="D.logo.png" alt="Dhananjay logo" className="nav-logo h-10 w-auto" />
+              </motion.a>
+              <div className="hidden items-center gap-8 md:flex">
+                {navItems.map(([label, href], index) => (
+                  <motion.a
+                    key={label}
+                    href={href}
+                    className={`text-base font-medium transition hover:text-white ${activeSection === href.replace('#', '') ? 'active-nav text-white' : 'text-slate-300'}`}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.08 }}
+                    whileHover={{ scale: 1.05, color: '#fff' }}
+                  >
+                    {label}
+                  </motion.a>
+                ))}
               </div>
-            </div> 
-        </div>
-        <div class="aspect-square bg-[url('work-2.png')] bg-no-repeat
-        bg-cover bg-center rounded-lg relative cursor-pointer group">
-        <div class="absolute inset-0">
-            <a href="https://example.com/project1" target="_blank" class="block w-full h-full"></a>
-          </div>
-        <div class="bg-white w-11/12 rounded-md absolute bottom-5 left-1/2
-        -translate-x-1/2 py-3 px-5 flex items-center justify-between
-        duration-500 group-hover:bottom-7">
-            <div>
-                <h2 class="font-semibold dark:text-black/80">Android Projects</h2>
-                <p class="text-sm text-gray-700">Quiz App</p>
+              <motion.button
+                className="nav-toggle focus-ring md:hidden"
+                onClick={() => setOpen(prev => !prev)}
+                aria-expanded={open}
+                aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+                aria-controls="mobile-slide-menu"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <InlineIcon name={open ? 'x' : 'menu'} size={24} />
+              </motion.button>
+            </nav>
+          </motion.header>
+
+          <AnimatePresence>
+            {open && (
+              <>
+                <motion.div
+                  className="slide-menu-backdrop"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                  onClick={() => setOpen(false)}
+                  aria-hidden="true"
+                />
+                <motion.aside
+                  id="mobile-slide-menu"
+                  className="slide-menu-panel"
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label="Mobile navigation menu"
+                  initial={{ x: '100%' }}
+                  animate={{ x: 0 }}
+                  exit={{ x: '100%' }}
+                  transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <button
+                    className="slide-menu-close focus-ring"
+                    onClick={() => setOpen(false)}
+                    aria-label="Close navigation menu"
+                    type="button"
+                  >
+                    <InlineIcon name="x" size={24} />
+                  </button>
+
+                  <div className="flex items-center gap-3 mb-4 px-1">
+                    <img src="D.logo.png" alt="Dhananjay logo" className="h-10 w-auto" />
+                    <span className="text-lg font-semibold text-white">Menu</span>
+                  </div>
+
+                  <div className="slide-menu-list">
+                    {navItems.map(([label, href], index) => (
+                      <motion.a
+                        key={label}
+                        href={href}
+                        onClick={() => setOpen(false)}
+                        className="slide-menu-link"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.25, delay: 0.08 + index * 0.05 }}
+                      >
+                        <span className="slide-menu-icon">
+                          <InlineIcon name={navIcons[label] || 'arrow'} size={22} />
+                        </span>
+                        <span className="flex-1">{label}</span>
+                        <InlineIcon name="arrow" size={16} className="opacity-60" />
+                      </motion.a>
+                    ))}
+                  </div>
+
+                  <div className="mt-auto pt-6">
+                    <a
+                      href="DhananjayKhaireResume.pdf"
+                      download
+                      onClick={() => setOpen(false)}
+                      className="slide-menu-link"
+                    >
+                      <span className="slide-menu-icon">
+                        <InlineIcon name="folder" size={22} />
+                      </span>
+                      <span className="flex-1">Download Resume</span>
+                    </a>
+                  </div>
+                </motion.aside>
+              </>
+            )}
+          </AnimatePresence>
+        </>
+      );
+    }
+
+    function Hero() {
+      return (
+        <section id="header" className="hero-section">
+          <motion.div className="mx-auto w-full max-w-4xl px-4 sm:px-6" initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7 }}>
+            <div className="profile-ring mx-auto overflow-hidden rounded-full bg-gradient-to-br from-fuchsia-500 via-violet-400 to-orange-400 p-[3px] shadow-[0_0_70px_rgba(168,85,247,.35)]">
+              <img src="dk-profile.png" alt="Dhananjay Khaire profile" className="h-full w-full rounded-full object-cover object-top" loading="lazy" />
             </div>
-              <div class="border rounded-full border-black w-9 aspect-square flex
-              items-center justify-center shadow-[2px_2px_0_#000]
-              group-hover:bg-blue-300 transition">
-                <img src="send-icon.png" alt="" class="w-5">
-              </div>
-            </div> 
-        </div>
-        <div class="aspect-square bg-[url('work-3.png')] bg-no-repeat
-        bg-cover bg-center rounded-lg relative cursor-pointer group">
-        <div class="absolute inset-0">
-            <a href="https://example.com/project1" target="_blank"
-             class="block w-full h-full"></a>
-          </div>
-        <div class="bg-white w-11/12 rounded-md absolute bottom-5 left-1/2
-        -translate-x-1/2 py-3 px-5 flex items-center justify-between
-        duration-500 group-hover:bottom-7">
-            <div>
-                <h2 class="font-semibold dark:text-black/80">Fullstack Projects</h2>
-                <p class="text-sm text-gray-700">Frontend &Backend</p>
+            <p className="hero-greeting font-Ovo text-violet-100">Hi, I am Dhananjay Khaire</p>
+            <h1 className="hero-title gradient-text title-glow mx-auto">
+              MCA (AI/ML) Student focused on Python, Cloud, and Real-World AI Projects
+            </h1>
+            <p className="hero-sub mx-auto">
+              Building practical skills in Python, AWS, Linux, AI/ML, deployment, and technical support through real project-based learning.
+            </p>
+            <div className="hero-badges">
+              {seeking.map(item => <span key={item} className="hero-badge badge rounded-full text-violet-100">{item}</span>)}
             </div>
-              <div class="border rounded-full border-black w-9 aspect-square flex
-              items-center justify-center shadow-[2px_2px_0_#000]
-              group-hover:bg-blue-300 transition">
-                <img src="send-icon.png" alt="" class="w-5">
-              </div>
-            </div> 
-        </div>
-        <div class="aspect-square bg-[url('work-4.png')] bg-no-repeat
-        bg-cover bg-center rounded-lg relative cursor-pointer group">
-        <div class="absolute inset-0">
-            <a href="https://example.com/project1" target="_blank" 
-            class="block w-full h-full"></a>
-          </div>
-        <div class="bg-white w-11/12 rounded-md absolute bottom-5 left-1/2
-        -translate-x-1/2 py-3 px-5 flex items-center justify-between
-        duration-500 group-hover:bottom-7">
-            <div>
-                <h2 class="font-semibold dark:text-black/80">AWS & Devops Projects</h2>
-                <p class="text-sm text-gray-700">Website Deployment</p>
+            <div className="hero-cta">
+              <a href="#contact" className="btn-primary focus-ring bg-white text-[#15051f] hover:bg-violet-100">Contact Me</a>
+              <a href="DhananjayKhaireResume.pdf" download className="btn-secondary focus-ring text-white">Resume</a>
+              <a href="https://github.com/Dhananjaykhaire" target="_blank" rel="noreferrer" className="btn-secondary focus-ring text-violet-100 border-violet-300/35 hover:bg-violet-500/10">GitHub</a>
             </div>
-              <div class="border rounded-full border-black w-9 aspect-square flex
-              items-center justify-center shadow-[2px_2px_0_#000]
-              group-hover:bg-blue-300 transition">
-                <img src="send-icon.png" alt="" class="w-5">
+          </motion.div>
+        </section>
+      );
+    }
+
+    function AcademicJourney() {
+      const [expanded, setExpanded] = useState({
+        step1: false,
+        step2: false,
+        step3: false
+      });
+      const [active, setActive] = useState('step1');
+
+      const toggleExpand = (id) => {
+        setExpanded((prev) => ({ ...prev, [id]: !prev[id] }));
+        setActive(id);
+      };
+
+      return (
+        <Section id="about" kicker="Education & Experience" title="Academic Journey">
+          <div className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/[.06] p-5 shadow-[0_30px_90px_rgba(0,0,0,.25)] backdrop-blur-xl sm:p-7">
+            <div className="timeline-floaters">
+              <div className="timeline-floater one" />
+              <div className="timeline-floater two" />
+              <div className="timeline-floater three" />
+            </div>
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-violet-500/10 to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-violet-500/10 to-transparent" />
+            <div className="relative mx-auto max-w-6xl">
+              <div className="mb-8 rounded-[2rem] border border-white/10 bg-black/20 p-5 text-center shadow-[0_25px_80px_rgba(100,0,255,.14)] sm:p-7">
+                <p className="timeline-subtitle mt-4 text-base leading-7 text-slate-300 sm:text-lg">My learning path from Higher Secondary Education to MCA (AI & ML).</p>
               </div>
-            </div> 
-        </div>
-    </div>
-  <a href="#" class="w-max flex item-center justify-center gap-2 text-gray-700
-  border-[0.5px] border-gray-700 rounded-full py-3 px-10 mx-auto my-20 
-  hover:bg-lightHover duration-500
-   dark:text-white  dark:border-white dark:hover:bg-darkHover">Show more  
-     <img src="right-arrow-bold.png" alt="" class="w-4 dark:hidden">
-     <img src="right-arrow-bold-dark.png" alt="" class="w-4 hidden dark:block">
-</a>
+              <div className="timeline-container">
+                <div className="timeline-line" />
+                <div className="timeline-list">
+                  {academicSteps.map((step, index) => {
+                    const isLeft = index % 2 === 0;
 
-</div>
-<!-------------contact-------------->
-<div id="contact" class="w-full px-[12%] py-10 scroll-mt-20 bg-[url('footer-bg-color.png')] 
-    bg-no-repeat bg-[length:90%_auto] bg-center
-dark:bg-none">
+                    return (
+                      <div key={step.id} className="timeline-item">
+                        <div className="timeline-marker-wrapper">
+                          <span className="timeline-connector" aria-hidden="true" />
+                          <div
+                            className={`timeline-marker ${active === step.id ? 'timeline-marker-active' : ''}`}
+                          />
+                        </div>
+                        <div className={`timeline-card-wrapper ${isLeft ? 'left' : 'right'}`}>
+                          <motion.article
+                            className="timeline-card group relative overflow-hidden"
+                            onHoverStart={() => setActive(step.id)}
+                            onFocus={() => setActive(step.id)}
+                          >
+                            <div className="timeline-card-header flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                              <div className="flex items-start gap-3">
+                                <div className={`flex h-12 w-12 min-w-[3rem] items-center justify-center rounded-2xl bg-gradient-to-br ${step.color} text-xl shadow-[0_12px_40px_rgba(168,85,247,.2)]`}>
+                                  <span aria-hidden="true">{step.icon}</span>
+                                </div>
+                                <div className="min-w-0">
+                                  <h4 className="timeline-card-title font-semibold text-white">{step.title}</h4>
+                                  <p className="timeline-card-subtitle mt-0.5 text-slate-400">{step.institution}</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="timeline-meta mt-3">
+                              <span className="timeline-badge">{step.duration}</span>
+                              {step.score && <span className="timeline-badge">{step.score}</span>}
+                              <span className="timeline-badge">{step.status}</span>
+                            </div>
 
-    <h4 class="text-center mb-2 text-lg font-Ovo">Connect with me</h4>
-    <h2 class="text-center text-5xl font-Ovo">Get in touch</h2>
-    <p class="text-center max-w-2xl mx-auto mt-5 mb-12"> I'd love to hear from you!
-    If you have any question, comments or feedback, please use the  form  below.</p>
-    <p id="backendStatus" class="text-center text-sm text-gray-500 dark:text-white/70">Backend status: Checking…</p>
+                            <div className="timeline-card-footer mt-auto flex justify-start pt-3">
+                              <button
+                                type="button"
+                                onClick={() => toggleExpand(step.id)}
+                                className="timeline-card-button focus-ring"
+                                aria-expanded={expanded[step.id]}
+                                aria-controls={`details-${step.id}`}
+                                aria-label={`${expanded[step.id] ? 'Hide' : 'View'} details for ${step.title}`}
+                              >
+                                <span className="timeline-card-label">{expanded[step.id] ? 'Hide Details' : 'View Details'}</span>
+                                <span className={`timeline-card-chevron ${expanded[step.id] ? 'rotate-180' : ''}`}>
+                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true">
+                                    <path d="M6 9l6 6 6-6" />
+                                  </svg>
+                                </span>
+                              </button>
+                            </div>
+                            <AnimatePresence initial={false}>
+                              {expanded[step.id] && (
+                                <motion.div
+                                  id={`details-${step.id}`}
+                                  initial={{ opacity: 0, height: 0, y: -10 }}
+                                  animate={{ opacity: 1, height: 'auto', y: 0 }}
+                                  exit={{ opacity: 0, height: 0, y: -10 }}
+                                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                                  className="timeline-card-details overflow-hidden"
+                                >
+                                  <div className="mt-4 space-y-4 rounded-[1.5rem] border border-white/10 bg-white/5 p-4 text-sm leading-7 text-slate-300">
+                                    {step.specialization && (
+                                      <div>
+                                        <h4 className="text-sm font-semibold text-white">Specialization</h4>
+                                        <p className="mt-1 text-sm text-slate-200">{step.specialization}</p>
+                                      </div>
+                                    )}
 
-    <form id="contactForm" class="max-w-2xl mx-auto">
-               
+                                    {step.learning && (
+                                      <div>
+                                        <h4 className="text-sm font-semibold text-white">Learning</h4>
+                                        <p className="mt-1 text-sm text-slate-200">{step.learning}</p>
+                                      </div>
+                                    )}
+                                  </div>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </motion.article>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </Section>
+      );
+    }
 
-        <div class="grid grid-cols-auto gap-6 mt-10 mb-8">
-            <input type="text" placeholder="Enter your name" class="flex-1 p-3
-            outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-darkHover/30 
-            dark:border-white/90" required name="name">
+    function Skills() {
+      return (
+        <Section id="skills" kicker="Technical Stack" title="Skills">
+          <div className="mx-auto max-w-6xl space-y-8 text-left">
+            {skillGroups.map(group => (
+              <div key={group.category} className="glass rounded-[2rem] p-4 sm:p-6 lg:p-7">
+                <h3 className="text-center text-xl font-bold text-white sm:text-left sm:text-2xl">{group.category}</h3>
+                <div className="skills-grid mt-5">
+                  {group.skills.map(([name, logo]) => (
+                    <div key={name} className="skill-tile neon-card rounded-2xl p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(168,85,247,.18)] sm:rounded-3xl sm:p-6">
+                      <img src={logo} alt={`${name} logo`} className="skill-logo mx-auto h-12 w-12 sm:h-16 sm:w-16" />
+                      <h4 className="mt-3 text-sm font-semibold text-white sm:mt-4 sm:text-lg">{name}</h4>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </Section>
+      );
+    }
 
-            <input type="email" placeholder="Enter your email" class="flex-1 p-3
-            outline-none border-[0.5px] border-gray-400 rounded-md bg-white
-            dark:bg-darkHover/30 dark:border-white/90" required name="email">
-        </div>
+    function Projects() {
+      const [expanded, setExpanded] = useState(false);
+      const [featuredProject, setFeaturedProject] = useState(featured);
+      const [displayProjects, setDisplayProjects] = useState([...initialProjects]);
+      const [displayUpcoming, setDisplayUpcoming] = useState([...upcomingProjects]);
 
-        <textarea rows="8" placeholder="Enter your message" class="w-full p-4
-        outline-none border-[0.5px] border-gray-400 rounded-md bg-white mb-6
-        dark:border-white/90 bg-white
-            dark:bg-darkHover/30" required name="message"></textarea>
+      const handleFeatureProject = (project) => {
+        // Store the current featured project with all its fields
+        const previousFeatured = { ...featuredProject };
 
-        <p id="formStatus" class="text-center text-sm mb-4 text-gray-600 dark:text-white/70"></p>
+        // Set the new featured project with all necessary fields
+        setFeaturedProject({
+          title: project.title,
+          description: project.description,
+          problem: project.problem,
+          solution: project.solution,
+          impact: project.impact,
+          stack: project.stack,
+          image: project.image,
+          repo: project.repo,
+          live: project.live,
+          category: project.category
+        });
 
-    <button class="py-3 px-8 w-max flex items-center justify-between gap-2
-    bg-black/80 text-white rounded-full mx-auto  hover:bg-black duration-500
-    dark:bg-transparent dark:border-[0.5px] dark:hover:bg-darkHover">Submit now
-        <img src="right-arrow-white.png" alt="" class="w-4">
-    </button>
-    </form>
-</div>
+        // Find and remove the selected project from its current array
+        const updatedInitial = displayProjects.filter(p => p.title !== project.title);
+        const updatedUpcoming = displayUpcoming.filter(p => p.title !== project.title);
 
-<!------footer------->
-<div class="mt-20">
-   <div class="text-center">
-    <img src="D.logo.png" alt="" class="w-36 mx-auto mb-2 dark:hidden">
+        // Add the previous featured project to the appropriate array
+        // Check if it was originally in initialProjects or upcomingProjects
+        const wasInInitial = initialProjects.some(p => p.title === previousFeatured.title);
+        if (wasInInitial) {
+          updatedInitial.push(previousFeatured);
+        } else {
+          updatedUpcoming.push(previousFeatured);
+        }
 
-    <img src="d.logodark.png" alt="" class="w-36 mx-auto mb-2 hidden dark:block">
+        // Update the display arrays
+        setDisplayProjects(updatedInitial);
+        setDisplayUpcoming(updatedUpcoming);
 
-    <div class="w-max flex items-center gap-2 mx-auto">
-        <img src="mail_icon.png" alt="" class="w-6 dark:hidden">
-        <img src="mail_icon_dark.png" alt="" class="w-6 hidden dark:block">
-                    dhananjay.khaire2004@gmail.com
-    </div>
-   </div>
-   <div class="text-center sm:flex items-center justify-between border-t
-   border-gray-400 mx-[10%] mt-12 py-6">
-      <p id="copyright">© 2024 Dhananjay Khaire. All rights reserved.</p>
-      <ul class="flex items-center gap-10 justify-center mt-4 sm:mt-0">
-        <li><a href="https://github.com/Dhananjaykhaire"><i class="fa-brands fa-github" style="font-size: 24px;"></i></a></li>
-        <li><a href="https://www.instagram.com/dhananjay_1473/"><i class="fa-brands fa-instagram" style="font-size: 24px;"></i></a></li>
-        <li><a href="https://www.linkedin.com/in/dhananjay-khaire-ab1414255/"><i class="fa-brands fa-linkedin"  style="font-size: 24px;"></i></a></li>
-      </ul>
-   </div>
-</div>
-    <script src="script.js"></script>
-</body>
+        window.scrollTo({ top: document.getElementById('projects').offsetTop - 100, behavior: 'smooth' });
+      };
+
+      const handleToggleExpand = () => {
+        if (expanded) {
+          setExpanded(false);
+          window.scrollTo({ top: document.getElementById('projects').offsetTop - 100, behavior: 'smooth' });
+        } else {
+          setExpanded(true);
+        }
+      };
+
+      const ProjectCard = ({ project, index, isUpcoming }) => (
+        <motion.article
+          key={project.title}
+          className="project-card neon-card overflow-hidden rounded-[1.5rem] text-left border border-white/10"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          whileHover={{ y: -5 }}
+          transition={{
+            duration: 0.5,
+            ease: 'easeInOut',
+            delay: isUpcoming ? index * 0.12 : 0
+          }}
+        >
+          <div className="relative h-56 overflow-hidden">
+            <img src={project.image} alt={`${project.title} preview`} className="h-full w-full object-cover transition duration-500 hover:scale-105" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#07010d] via-transparent to-transparent"></div>
+            <div className="absolute top-3 left-3 flex items-center gap-2 rounded-full bg-black/60 backdrop-blur-md px-3 py-2">
+              <img
+                src={categoryLogos[project.category] || 'https://cdn.simpleicons.org/code/FFFFFF'}
+                alt={project.category}
+                className="h-8 w-8"
+              />
+              <span className="text-sm font-semibold text-white">
+                {project.category === 'ai-ml' ? 'AI/ML' : project.category === 'web-dev' ? 'Web Development' : 'Cloud'}
+              </span>
+            </div>
+            {(project.isFuture || project.isUpcoming) && (
+              <motion.div
+                className="absolute top-3 right-3 rounded-full bg-gradient-to-r from-cyan-400 to-blue-400 px-3 py-1 text-xs font-bold text-white shadow-[0_0_15px_rgba(34,211,238,0.4)]"
+                whileHover={{ scale: 1.05 }}
+              >
+                🚀 Coming Soon
+              </motion.div>
+            )}
+          </div>
+          <div className="-mt-20 relative z-10 p-5">
+            <h3 className="font-Ovo text-2xl text-white">{project.title}</h3>
+            {project.isFuture || project.isUpcoming ? (
+              <p className="mt-2 text-sm text-cyan-300 font-medium">Upcoming Project • In Development</p>
+            ) : (
+              <p className="mt-2 text-sm text-slate-400 line-clamp-2">{project.description}</p>
+            )}
+            <div className="mt-3 flex flex-wrap gap-1.5">{project.stack.map(item => (
+              <span key={item} className="rounded-full border border-violet-400/20 bg-violet-500/10 px-2.5 py-1 text-xs font-medium text-violet-200">{item}</span>
+            ))}</div>
+            <div className="mt-4 flex flex-wrap gap-3">
+              {project.isUpcoming ? (
+                <motion.span
+                  className="rounded-full bg-violet-500/20 border border-violet-400/30 px-4 py-2 text-xs font-semibold text-violet-200"
+                >
+                  In Development
+                </motion.span>
+              ) : (
+                <>
+                  <motion.a
+                    href={project.repo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="focus-ring rounded-full bg-white/10 border border-white/20 px-4 py-2 text-xs font-semibold text-white transition hover:bg-white/20"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    GitHub
+                  </motion.a>
+                  {project.live && project.live !== '#projects' && (
+                    <motion.a
+                      href={project.live}
+                      className="focus-ring rounded-full border border-violet-400/30 px-4 py-2 text-xs font-semibold text-violet-200 transition hover:bg-violet-500/20"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      Demo
+                    </motion.a>
+                  )}
+                </>
+              )}
+              {!project.isUpcoming && (
+                <motion.button
+                  onClick={() => handleFeatureProject(project)}
+                  className="focus-ring rounded-full border border-white/10 px-3 py-2 text-xs font-semibold text-slate-400 transition hover:bg-white/10 hover:text-white"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  ⭐
+                </motion.button>
+              )}
+            </div>
+          </div>
+        </motion.article>
+      );
+
+      return (
+        <Section id="projects" kicker="Practical Work" title="Projects">
+          <motion.div
+            className="glass mx-auto max-w-6xl rounded-[2.5rem] p-6 text-left sm:p-10 relative overflow-hidden"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            style={{
+              boxShadow: '0 0 60px rgba(251, 146, 60, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+            }}
+          >
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-400 via-amber-400 to-yellow-400"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-amber-500/5 pointer-events-none"></div>
+
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-6">
+                <motion.span
+                  className="rounded-full bg-gradient-to-r from-orange-400 to-amber-400 px-4 py-1.5 text-xs font-bold text-white shadow-[0_0_20px_rgba(251,146,60,0.4)]"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  ⭐ Featured Project
+                </motion.span>
+                <div className="flex items-center gap-2 text-sm text-amber-300">
+                  <img
+                    src={categoryLogos[featuredProject.category] || 'https://cdn.simpleicons.org/code/FFFFFF'}
+                    alt={featuredProject.category}
+                    className="h-8 w-8"
+                  />
+                  <span className="capitalize">{featuredProject.category === 'ai-ml' ? 'AI/ML' : featuredProject.category === 'web-dev' ? 'Web Development' : 'Cloud'}</span>
+                </div>
+              </div>
+
+              <div className="featured-grid">
+                <div>
+                  <h3 className="font-Ovo text-4xl sm:text-5xl text-white leading-tight">{featuredProject.title}</h3>
+                  <p className="mt-4 text-lg leading-7 text-slate-300">{featuredProject.description}</p>
+
+                  <div className="mt-6 space-y-4">
+                    <div className="rounded-2xl border border-white/10 bg-white/[.05] p-5">
+                      <p className="text-sm text-amber-300 font-semibold mb-2">🎯 Problem</p>
+                      <p className="text-slate-300">{featuredProject.problem}</p>
+                    </div>
+
+                    {featuredProject.solution && (
+                      <div className="rounded-2xl border border-amber-400/20 bg-amber-500/5 p-5">
+                        <p className="text-sm text-amber-300 font-semibold mb-2">💡 Solution</p>
+                        <p className="text-slate-300">{featuredProject.solution}</p>
+                      </div>
+                    )}
+
+                    {featuredProject.impact && (
+                      <div className="rounded-2xl border border-orange-400/20 bg-orange-500/5 p-5">
+                        <p className="text-sm text-orange-300 font-semibold mb-2">📈 Impact</p>
+                        <p className="text-slate-300">{featuredProject.impact}</p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="mt-6 flex flex-wrap gap-2">{featuredProject.stack.map(item => (
+                    <span key={item} className="rounded-full border border-amber-400/30 bg-amber-500/10 px-4 py-2 text-sm font-medium text-amber-100 shadow-[0_0_15px_rgba(251,146,60,0.2)]">{item}</span>
+                  ))}</div>
+
+                  <div className="mt-6 flex gap-3">
+                    <motion.a
+                      href={featuredProject.repo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-full bg-gradient-to-r from-orange-400 to-amber-400 px-6 py-3 text-sm font-bold text-white shadow-[0_0_25px_rgba(251,146,60,0.4)] transition hover:shadow-[0_0_35px_rgba(251,146,60,0.6)]"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      GitHub Repository
+                    </motion.a>
+                    {featuredProject.live && featuredProject.live !== '#projects' && (
+                      <motion.a
+                        href={featuredProject.live}
+                        className="rounded-full border-2 border-amber-400/50 px-6 py-3 text-sm font-bold text-white transition hover:bg-amber-500/20"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        Live Demo
+                      </motion.a>
+                    )}
+                  </div>
+                </div>
+
+                <motion.div
+                  className="relative"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-amber-500/20 rounded-3xl blur-2xl"></div>
+                  <img
+                    src={featuredProject.image || 'aws.png'}
+                    alt={`${featuredProject.title} preview`}
+                    className="relative aspect-video w-full rounded-3xl object-cover shadow-[0_25px_80px_rgba(0,0,0,.5)] border border-white/10"
+                  />
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+
+          <div className="mx-auto mt-10">
+            <p className="text-center text-lg text-violet-300 font-semibold mb-6">Other Projects</p>
+            <div className="projects-grid max-w-6xl md:gap-6">
+              {displayProjects.map((project, index) => (
+                <ProjectCard key={project.title} project={project} index={index} isUpcoming={false} />
+              ))}
+              {expanded && displayUpcoming.map((project, index) => (
+                <ProjectCard key={project.title} project={project} index={index} isUpcoming={true} />
+              ))}
+            </div>
+          </div>
+          <div className="mx-auto mt-8 text-center">
+            <motion.button
+              onClick={handleToggleExpand}
+              className="btn-secondary focus-ring text-violet-200 border-violet-400/30 hover:bg-violet-500/20 flex items-center gap-2 mx-auto"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {expanded ? 'Show Less' : 'Show More'}
+              <motion.span
+                animate={{ rotate: expanded ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                ↓
+              </motion.span>
+            </motion.button>
+          </div>
+        </Section>
+      );
+    }
+
+    function Certifications() {
+      return (
+        <Section id="certifications" kicker="Learning Proof" title="Certifications">
+          <div className="cert-grid mx-auto max-w-6xl">
+            {certifications.map(([title, focus, linkedin]) => (
+              <motion.a
+                key={title}
+                href={linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="neon-card cert-card rounded-2xl p-4 text-center block sm:rounded-3xl sm:p-6"
+                whileHover={{ scale: 1.03, y: -4 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-violet-500/15 text-xl font-bold text-violet-100 sm:mb-4 sm:h-14 sm:w-14 sm:rounded-2xl sm:text-2xl">{title[0]}</div>
+                <h3 className="text-base font-bold text-white sm:text-xl">{title}</h3>
+                <p className="mt-2 text-xs leading-5 text-slate-300 sm:mt-3 sm:text-sm sm:leading-6">{focus}</p>
+                <p className="mt-3 text-xs text-violet-300 sm:mt-4">View on LinkedIn →</p>
+              </motion.a>
+            ))}
+          </div>
+        </Section>
+      );
+    }
+
+    function GitHubSection() {
+      return (
+        <Section id="github" kicker="Code Activity" title="GitHub">
+          <div className="glass github-grid mx-auto max-w-6xl rounded-[2rem] p-4 sm:p-6 lg:p-8">
+            <div className="text-left">
+              <h3 className="text-xl font-bold text-white sm:text-2xl">Contribution Graph</h3>
+              <a href="https://github.com/dhananjaykhaire" target="_blank" rel="noreferrer">
+                <img src="https://ghchart.rshah.org/dhananjaykhaire" alt="GitHub contribution graph for Dhananjay Khaire" loading="lazy" className="mt-4 w-full rounded-xl bg-white p-2 sm:mt-5 sm:rounded-2xl sm:p-3 cursor-pointer transition hover:opacity-90" />
+              </a>
+            </div>
+            <div className="text-left">
+              <h3 className="text-xl font-bold text-white sm:text-2xl">Pinned Repositories</h3>
+              <div className="mt-4 space-y-3 sm:mt-5 sm:space-y-4">
+                {pinnedRepos.map(({ name, description, href, language, languageIcon, stars, forks }) => (
+                  <a key={name} href={href} target="_blank" rel="noreferrer" className="repo-card rounded-2xl border border-white/10 bg-white/[.05] p-4 transition hover:bg-white/[.09] focus-ring flex flex-col gap-3 sm:rounded-3xl sm:p-5 sm:gap-4 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                      <div className="mb-2 flex items-center gap-2 sm:mb-3 sm:gap-3">
+                        <img src={languageIcon} alt={`${language} icon`} className="h-8 w-8 rounded-xl bg-white/5 p-1.5 sm:h-9 sm:w-9 sm:rounded-2xl sm:p-2" loading="lazy" />
+                        <div>
+                          <b className="text-white text-sm sm:text-base">{name}</b>
+                          <p className="mt-0.5 text-xs text-slate-400 sm:mt-1 sm:text-sm">{description}</p>
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap gap-2 text-xs text-slate-300 sm:gap-3">
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2 py-0.5 sm:gap-2 sm:px-3 sm:py-1">🌐 {language}</span>
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2 py-0.5 sm:gap-2 sm:px-3 sm:py-1">★ {stars}</span>
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2 py-0.5 sm:gap-2 sm:px-3 sm:py-1">🍴 {forks}</span>
+                      </div>
+                    </div>
+                    <svg className="hidden h-5 w-5 text-violet-200 sm:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Section>
+      );
+    }
+
+    function Contact() {
+      const [status, setStatus] = useState('');
+      async function submitForm(event) {
+        event.preventDefault();
+        const form = event.currentTarget;
+        const data = Object.fromEntries(new FormData(form).entries());
+        setStatus('Sending...');
+        try {
+          const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+          if (!res.ok) throw new Error('Message could not be sent.');
+          form.reset();
+          setStatus('Message sent successfully.');
+        } catch (error) {
+          setStatus('Static mode: please contact me directly by email.');
+        }
+      }
+      const cards = [
+        { label: 'Email', value: 'dhananjay.khaire2004@gmail.com', href: 'https://mail.google.com/mail/?view=cm&fs=1&to=dhananjay.khaire2004@gmail.com', icon: 'mail-icon.png', external: true },
+        { label: 'LinkedIn', value: 'dhananjay-khaire', href: 'https://www.linkedin.com/in/dhananjay-khaire-ab1414255/', icon: 'linkedin.png', external: true },
+        { label: 'GitHub', value: 'Dhananjaykhaire', href: 'https://github.com/Dhananjaykhaire', icon: 'github.png', external: true },
+        { label: 'Location', value: 'Pune, Maharashtra', href: '#contact', icon: 'location.png', external: false }
+      ];
+      return (
+        <Section id="contact" kicker="Recruiter Contact" title="Get In Touch">
+          <div className="contact-grid mx-auto max-w-6xl">
+            <div className="contact-cards">
+              {cards.map(({ label, value, href, icon, external }) => (
+                <a
+                  key={label}
+                  href={href}
+                  {...(external ? { target: '_blank', rel: 'noreferrer noopener' } : {})}
+                  aria-label={`${label} link`}
+                  className="neon-card contact-card-item rounded-2xl border border-white/10 bg-white/[.05] p-4 text-left transition hover:border-violet-300/40 focus-ring focus-visible:ring-2 focus-visible:ring-violet-500/30 sm:rounded-3xl sm:p-5"
+                >
+                  <div className="flex items-center gap-2.5 text-xs text-violet-200 sm:gap-3 sm:text-sm">
+                    <img src={icon} alt={`${label} icon`} className="h-10 w-10 rounded-2xl bg-white/5 p-1.5 sm:h-12 sm:w-12 sm:rounded-3xl sm:p-2" loading="lazy" />
+                    <span>{label}</span>
+                  </div>
+                  <b className="mt-3 block text-white text-sm break-all sm:mt-4 sm:text-base">{value}</b>
+                </a>
+              ))}
+            </div>
+            <form onSubmit={submitForm} className="glass contact-form-card rounded-[2rem] p-4 text-left sm:p-5 lg:p-6">
+              <div className="contact-form-fields grid gap-3 sm:gap-4 sm:grid-cols-2">
+                <label className="block min-w-0">
+                  <span className="sr-only">Name</span>
+                  <input name="name" required placeholder="Your name" aria-label="Your name" className="contact-input w-full rounded-xl border border-white/10 bg-white/[.06] px-3 py-2.5 text-white outline-none transition focus:border-violet-300 focus:ring-2 focus:ring-violet-500/20 sm:rounded-2xl sm:px-4 sm:py-3" />
+                </label>
+                <label className="block min-w-0">
+                  <span className="sr-only">Email</span>
+                  <input name="email" required type="email" placeholder="Your email" aria-label="Your email" className="contact-input w-full rounded-xl border border-white/10 bg-white/[.06] px-3 py-2.5 text-white outline-none transition focus:border-violet-300 focus:ring-2 focus:ring-violet-500/20 sm:rounded-2xl sm:px-4 sm:py-3" />
+                </label>
+              </div>
+              <label className="block mt-3 sm:mt-4">
+                <span className="sr-only">Message</span>
+                <textarea name="message" required rows="5" placeholder="Message" aria-label="Message" className="contact-textarea w-full rounded-xl border border-white/10 bg-white/[.06] px-3 py-2.5 text-white outline-none transition focus:border-violet-300 focus:ring-2 focus:ring-violet-500/20 resize-none sm:rounded-2xl sm:px-4 sm:py-3 sm:rows-6"></textarea>
+              </label>
+              <button type="submit" className="btn-primary mt-4 w-full bg-white text-[#12051f] hover:bg-violet-100 sm:w-auto">Send Message</button>
+              <p className="mt-3 text-xs text-slate-400 sm:text-sm">{status}</p>
+            </form>
+          </div>
+        </Section>
+      );
+    }
+
+    function Footer() {
+      const links = [
+        ['Home', '#header'],
+        ['About', '#about'],
+        ['Projects', '#projects'],
+        ['GitHub', '#github'],
+        ['Contact', '#contact']
+      ];
+
+      return (
+        <footer className="border-t border-white/10 px-5 py-12 text-slate-400 sm:px-8">
+          <div className="mx-auto flex max-w-7xl flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
+            <div className="space-y-3 text-center lg:text-left">
+              <div className="flex items-center justify-center gap-3 text-white lg:justify-start">
+                <img src="D.logo.png" alt="Dhananjay logo" className="h-10 w-auto" />
+                <span className="text-xl font-semibold">Dhananjay Khaire</span>
+              </div>
+              <p className="max-w-md text-sm text-slate-400">AI/ML student portfolio showcasing practical frontend and cloud work with a premium purple/black style.</p>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <div>
+                <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-violet-200">Quick Links</h3>
+                <div className="space-y-2 text-sm">
+                  {links.map(([label, href]) => (
+                    <a key={label} href={href} className="block text-slate-300 transition hover:text-white">{label}</a>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-violet-200">Connect</h3>
+                <div className="space-y-3 text-sm">
+                  <a href="https://github.com/Dhananjaykhaire" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-slate-300 transition hover:text-white">
+                    <img src="https://cdn.simpleicons.org/github/FFFFFF" alt="GitHub icon" className="h-11 w-11 rounded-full bg-white/5 p-2" loading="lazy" />
+                    GitHub
+                  </a>
+                  <a href="https://www.linkedin.com/in/dhananjay-khaire-ab1414255/" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-slate-300 transition hover:text-white">
+                    <img src="linkedin.png" alt="LinkedIn icon" className="h-11 w-11 rounded-full bg-white/5 p-2" loading="lazy" />
+                    LinkedIn
+                  </a>
+                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dhananjay.khaire2004@gmail.com" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-slate-300 transition hover:text-white">
+                    <img src="mail-icon.png" alt="Email icon" className="h-11 w-11 rounded-full bg-white/5 p-2" loading="lazy" />
+                    Email
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p className="mt-10 text-center text-sm text-slate-500">Copyright © {new Date().getFullYear()} Dhananjay Khaire. All rights reserved.</p>
+        </footer>
+      );
+    }
+
+    function App() {
+      return (
+        <>
+          <Header />
+          <main>
+            <Hero />
+            <AcademicJourney />
+            <Skills />
+            <Projects />
+            <Certifications />
+            <GitHubSection />
+            <Contact />
+          </main>
+          <Footer />
+        </>
+      );
+    }
+
+    try {
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    } catch (err) {
+      console.error(err);
+      const root = document.getElementById('root');
+      if (root) {
+        root.innerHTML = `<div style="padding:20px;color:#fff;background:#111;font-family:sans-serif;white-space:pre-wrap;">Render error:\n${String(err).slice(0,1000)}</div>`;
+      }
+    }
+  </script>
+  </body>
 </html>
-
