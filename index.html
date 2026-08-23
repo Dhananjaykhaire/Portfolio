@@ -454,21 +454,21 @@
 
     @media (max-width: 767px) {
       .timeline-container {
-        padding: 2.5rem 0.75rem 2rem 0.25rem;
+        padding: 2rem 0.75rem 2rem 0.5rem;
         --timeline-connector-width: 1.35rem;
       }
 
       .timeline-line {
         display: block;
         left: 2.05rem;
-        top: calc(2.5rem + 118px);
+        top: calc(2rem + 118px);
         bottom: calc(2rem + 118px);
         width: 3px;
         transform: none;
       }
 
       .timeline-list {
-        gap: 2.75rem;
+        gap: 2.5rem;
       }
 
       .timeline-item {
@@ -483,12 +483,13 @@
         grid-row: 1;
         justify-content: center;
         width: 4.1rem;
-        min-height: 236px;
+        min-height: auto;
+        align-self: start;
       }
 
       .timeline-marker {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
       }
 
       .timeline-connector {
@@ -525,9 +526,9 @@
       }
 
       .timeline-card-wrapper .timeline-card {
-        width: 94%;
-        max-width: 94%;
-        min-height: 236px;
+        width: 100%;
+        max-width: 100%;
+        min-height: auto;
         padding: 1.15rem;
         border-radius: 1.35rem;
       }
@@ -1022,42 +1023,87 @@
     }
 
     /* ============================================
-       BREAKPOINT: LARGE DESKTOP (1600px+)
+       BREAKPOINT: DESKTOP (1440px+)
        ============================================ */
-    @media (min-width: 1600px) {
+    @media (min-width: 1440px) {
       .section-shell {
-        max-width: 1320px;
-        padding-top: 8rem;
-        padding-bottom: 8rem;
+        max-width: 1280px;
+        padding: 7rem 1.5rem;
       }
       .section-shell h2 {
-        font-size: clamp(3rem, 4vw, 4.25rem);
+        font-size: clamp(2.5rem, 3.5vw, 4rem);
+      }
+      .skills-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+      .cert-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+      .projects-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .hero-section {
+        padding: 7rem 1.5rem 4rem;
+      }
+      .timeline-container {
+        --timeline-item-gap: 2.5rem;
+        --timeline-center-column: 4.5rem;
+        --timeline-connector-width: calc(var(--timeline-item-gap) + (var(--timeline-center-column) / 2));
+      }
+      .timeline-list {
+        gap: 3.5rem;
+      }
+      .timeline-marker-wrapper {
+        min-height: 260px;
       }
     }
 
     /* ============================================
-       BREAKPOINT: DESKTOP (1200px–1599px) - default
+       BREAKPOINT: LAPTOP (1024px–1439px)
        ============================================ */
-    /* No overrides needed; defaults handle this range */
-
-    /* ============================================
-       BREAKPOINT: LAPTOP (992px–1199px)
-       ============================================ */
-    @media (max-width: 1199px) {
+    @media (min-width: 1024px) and (max-width: 1439px) {
       .section-shell {
-        padding: 5.5rem 1.25rem;
+        max-width: 1100px;
+        padding: 6rem 1.25rem;
       }
       .section-shell h2 {
-        font-size: clamp(2rem, 4vw, 3rem);
+        font-size: clamp(2rem, 3vw, 3.25rem);
+      }
+      .skills-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .cert-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .hero-section {
+        padding: 6rem 1.25rem 3.5rem;
+      }
+      .timeline-container {
+        --timeline-item-gap: 2rem;
+        --timeline-center-column: 4rem;
+        --timeline-connector-width: calc(var(--timeline-item-gap) + (var(--timeline-center-column) / 2));
+      }
+      .timeline-list {
+        gap: 3rem;
+      }
+      .timeline-marker-wrapper {
+        min-height: 250px;
       }
     }
 
     /* ============================================
-       BREAKPOINT: TABLET (768px–991px)
+       BREAKPOINT: TABLET (768px–1023px)
        ============================================ */
-    @media (max-width: 991px) {
+    @media (min-width: 768px) and (max-width: 1023px) {
       .section-shell {
+        max-width: 900px;
         padding: 5rem 1.1rem;
+      }
+      .section-shell h2 {
+        font-size: clamp(1.75rem, 3.5vw, 2.75rem);
       }
       .skills-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1084,62 +1130,42 @@
       .projects-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+      .hero-section {
+        padding: 5.5rem 1.1rem 3rem;
+      }
       .hero-title {
-        font-size: clamp(1.85rem, 5.5vw, 3rem);
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+      }
+      .timeline-container {
+        --timeline-item-gap: 1.5rem;
+        --timeline-center-column: 3.5rem;
+        --timeline-connector-width: calc(var(--timeline-item-gap) + (var(--timeline-center-column) / 2));
+      }
+      .timeline-list {
+        gap: 2.5rem;
+      }
+      .timeline-marker-wrapper {
+        min-height: 240px;
+      }
+      .timeline-line {
+        width: 3px;
+      }
+      .timeline-marker {
+        width: 16px;
+        height: 16px;
       }
     }
 
     /* ============================================
-       BREAKPOINT: TABLET SMALL (768px)
+       BREAKPOINT: MOBILE (320px–767px)
        ============================================ */
     @media (max-width: 767px) {
       .section-shell {
-        padding: 4.5rem 0.95rem;
+        max-width: 100%;
+        padding: 4rem 0.9rem;
       }
       .section-shell h2 {
-        font-size: clamp(1.7rem, 6vw, 2.4rem);
-      }
-      .section-shell > div > .kicker {
-        font-size: 0.7rem;
-      }
-      .nav-glass {
-        padding: 0.6rem 0.85rem;
-      }
-      .nav-glass nav {
-        padding: 0.4rem 0;
-      }
-      .hero-section {
-        padding-top: 4rem;
-        padding-bottom: 2rem;
-      }
-      .hero-title {
-        font-size: clamp(1.65rem, 7vw, 2.4rem);
-        line-height: 1.18;
-      }
-      .hero-sub {
-        font-size: clamp(0.95rem, 3.5vw, 1.05rem);
-        line-height: 1.65;
-      }
-      .profile-ring {
-        width: clamp(8.5rem, 30vw, 11rem);
-        height: clamp(8.5rem, 30vw, 11rem);
-      }
-      .hero-greeting {
-        font-size: clamp(1rem, 4vw, 1.2rem);
-      }
-      .hero-badges {
-        gap: 0.5rem;
-      }
-      .hero-badge {
-        font-size: 0.8rem;
-        padding: 0.45rem 0.85rem;
-      }
-      .hero-cta {
-        gap: 0.65rem;
-      }
-      .hero-cta a {
-        padding: 0.7rem 1.4rem;
-        font-size: 0.92rem;
+        font-size: clamp(1.5rem, 5vw, 2.25rem);
       }
       .skills-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1149,16 +1175,103 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 0.85rem;
       }
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1.15rem;
+      }
+      .contact-cards {
+        grid-template-columns: 1fr;
+      }
+      .contact-form-fields {
+        grid-template-columns: 1fr;
+      }
+      .github-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      .featured-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .featured-image-wrap {
+        order: -1;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      .hero-section {
+        padding: 5rem 0.9rem 2.5rem;
+      }
+      .hero-title {
+        font-size: clamp(1.5rem, 6vw, 2.25rem);
+      }
+      .hero-sub {
+        font-size: clamp(0.9rem, 3.5vw, 1rem);
+      }
+      .hero-greeting {
+        font-size: clamp(0.95rem, 4vw, 1.15rem);
+      }
+      .hero-badges {
+        gap: 0.5rem;
+      }
+      .hero-badge {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+      }
+      .hero-cta {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.75rem;
+      }
+      .hero-cta a {
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem 1.25rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* ============================================
+       BREAKPOINT: SMALL MOBILE (320px–374px)
+       ============================================ */
+    @media (max-width: 374px) {
+      .section-shell {
+        padding: 3.5rem 0.75rem;
+      }
+      .section-shell h2 {
+        font-size: clamp(1.25rem, 6vw, 1.75rem);
+      }
+      .hero-section {
+        padding: 4.5rem 0.75rem 2rem;
+      }
+      .hero-title {
+        font-size: clamp(1.25rem, 7vw, 1.75rem);
+      }
+      .hero-sub {
+        font-size: clamp(0.85rem, 4vw, 0.95rem);
+      }
+      .profile-ring {
+        width: clamp(6rem, 25vw, 8rem);
+        height: clamp(6rem, 25vw, 8rem);
+      }
+    }
+
+    /* ============================================
+       BREAKPOINT: LARGE MOBILE (480px–767px)
+       ============================================ */
+    @media (min-width: 480px) and (max-width: 767px) {
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .cert-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
       .projects-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.85rem;
       }
       .contact-cards {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.75rem;
-      }
-      .contact-form-card {
-        padding: 1.25rem;
       }
       .footer-grid {
         grid-template-columns: 1fr 1fr;
@@ -1174,14 +1287,14 @@
     }
 
     /* ============================================
-       BREAKPOINT: LARGE MOBILE (480px–767px)
+       BREAKPOINT: SMALL MOBILE (375px–479px)
        ============================================ */
-    @media (max-width: 600px) {
+    @media (min-width: 375px) and (max-width: 479px) {
       .skills-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
       .cert-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
       .projects-grid {
         grid-template-columns: 1fr;
@@ -1204,84 +1317,6 @@
       }
       .project-card .project-image {
         min-height: 200px;
-      }
-    }
-
-    /* ============================================
-       BREAKPOINT: MOBILE (375px–479px)
-       ============================================ */
-    @media (max-width: 479px) {
-      .section-shell {
-        padding: 3.5rem 0.85rem;
-      }
-      .section-shell h2 {
-        font-size: clamp(1.55rem, 7vw, 2rem);
-      }
-      .section-shell > div > .kicker {
-        font-size: 0.65rem;
-        letter-spacing: 0.12em;
-      }
-      .section-shell > div > .kicker::before,
-      .section-shell > div > .kicker::after {
-        width: 18px;
-      }
-      .hero-section {
-        padding-top: 3.5rem;
-        padding-bottom: 1.5rem;
-      }
-      .hero-title {
-        font-size: clamp(1.45rem, 6.5vw, 1.9rem);
-        line-height: 1.2;
-      }
-      .hero-sub {
-        font-size: 0.92rem;
-        line-height: 1.6;
-      }
-      .hero-cta a {
-        padding: 0.65rem 1.1rem;
-        font-size: 0.88rem;
-      }
-      .featured-card {
-        padding: 0.95rem;
-        border-radius: 1.25rem;
-      }
-      .featured-title {
-        font-size: clamp(1.4rem, 6vw, 1.85rem);
-      }
-      .skill-tile {
-        padding: 1.1rem 0.9rem;
-      }
-      .skill-logo {
-        width: 42px;
-        height: 42px;
-        margin-bottom: 0.75rem;
-      }
-      .skill-tile h4 {
-        font-size: 0.95rem;
-      }
-      .cert-card {
-        padding: 1.1rem;
-      }
-      .cert-card h3 {
-        font-size: 1.1rem;
-      }
-      .contact-card-item {
-        padding: 1rem;
-      }
-      .contact-card-item b {
-        font-size: 0.95rem;
-        word-break: break-word;
-      }
-      .contact-input,
-      .contact-textarea {
-        font-size: 0.92rem;
-        padding: 0.75rem 0.95rem;
-      }
-      .footer-wrap {
-        padding: 2.25rem 0.85rem 1.5rem;
-      }
-      .slide-menu-panel {
-        width: min(92vw, 320px);
       }
     }
 
@@ -1352,7 +1387,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 4rem 1.25rem 3rem;
+      padding: 6rem 1.25rem 3rem;
       text-align: center;
       position: relative;
     }
@@ -1374,7 +1409,7 @@
 
     .hero-greeting {
       font-size: clamp(1.05rem, 2.4vw, 1.3rem);
-      margin-top: 1.75rem;
+      margin-top: 2rem;
     }
 
     .hero-badges {
@@ -1382,7 +1417,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 0.6rem;
-      margin-top: 1.25rem;
+      margin-top: 1.5rem;
     }
 
     .hero-badge {
@@ -1395,7 +1430,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 0.85rem;
-      margin-top: 1.5rem;
+      margin-top: 2rem;
     }
 
     .hero-cta a {
